@@ -1,0 +1,26 @@
+@import "../../styles/utilities";
+
+
+.crypto-list {
+  @include flex-column(1em);
+  width: 100%;
+  padding: 1em 0 2.5em 0;
+}
+
+.crypto-container {
+  @include flex-row(5.625em);
+  align-items: flex-start;
+  background-color: $white;
+  border: 1px $grey-200 solid;
+  border-radius: 0.75em;
+  justify-content: space-between;
+  padding: 1.5625em;
+
+  &.info {
+    @include flex-column(1em);
+
+    ul {
+      padding-left: 1.25em;
+    }
+  }
+}
