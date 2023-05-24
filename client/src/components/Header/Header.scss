@@ -1,0 +1,35 @@
+@import "../../styles/utilities";
+
+.site-header {
+  @include flex-row(17.5em);
+  align-items: center;
+  background-color: $white;
+  width: 100%;
+  padding: 0.625em 11.25%;
+}
+
+.logo {
+  @include flex-column(0);
+  justify-content: flex-start;
+  color: $black;
+
+  &-author {
+    color: #939394;
+    font-size: 0.75em;
+    font-weight: 300;
+    margin-top: -0.5em;
+    padding-left: 0.15em;
+  }
+
+  &-text {
+    font-size: 1.75em;
+
+    span {
+      color: $yellow-main-500;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
