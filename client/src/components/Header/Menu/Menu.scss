@@ -1,0 +1,10 @@
+@import "../Header";
+
+.menu-list {
+  @include flex-row(3.75em);
+}
+
+.menu-item {
+  color: $black;
+  list-style-type: none;
+}
