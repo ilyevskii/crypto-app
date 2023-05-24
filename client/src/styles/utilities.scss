@@ -1,5 +1,6 @@
 @import "./constants";
 
+
 @mixin flex-column($gap: 0) {
   display: flex;
   flex-direction: column;
@@ -15,4 +16,12 @@
 @mixin size($height, $width) {
   height: $height;
   width: $width;
+}
+
+.semi-bold {
+  font-weight: 600;
+}
+
+.bold {
+  font-weight: 700;
 }
