@@ -42,7 +42,7 @@ export function CurrencyCard() {
                         <span>{currency.date}</span>
                         <span>{currency.time}</span>
                     </p>
-                    <button className="add-currency-btn">+</button>
+                    <button className="add-currency-control">+</button>
                 </div>
                 <div className="currency-card-body">
                     <div className="currency-card-body-info semi-bold">
@@ -55,6 +55,7 @@ export function CurrencyCard() {
                     </div>
                     <ChangesSchedule/>
                 </div>
+                <button className="add-currency-btn">Buy Currency</button>
             </div>
         </main>
     );
