@@ -1,2 +1,2 @@
 export {Header} from "./Header/Header";
-export {CryptoList} from "./CryptoList/CryptoList";
+export {CryptoTable} from "./CryptoTable/CryptoTable";

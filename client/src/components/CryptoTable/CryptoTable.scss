@@ -1,0 +1,68 @@
+@import "../../styles/utilities";
+
+
+.crypto-table {
+  background-color: $white;
+  width: 100%;
+  border-collapse: collapse;
+
+  &-header {
+
+    th {
+      font-size: 1.1em;
+      border-bottom: 2px solid $grey-400;
+      padding: 0.4em 0;
+    }
+
+    th:first-of-type {
+      padding-left: 0.3rem;
+    }
+  }
+
+  &-item {
+    text-align: center;
+    border-bottom: 1px solid $grey-200;
+    transition: 0.25s ease;
+
+    td {
+      padding: 0.5em 0;
+
+      .add-currency-btn {
+        color: $grey-600;
+        font-size: 1.6em;
+        transition: 0.25s ease;
+
+        &:hover {
+          cursor: pointer;
+          color: $yellow-main-500;
+        }
+      }
+    }
+
+    td:first-of-type {
+      padding-left: 0.3rem;
+    }
+
+    &:hover {
+      background-color: $grey-100;
+    }
+  }
+
+  td, th {
+    border-bottom: 1px solid $grey-300;
+  }
+}
+
+.currency-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: 1px solid black;
+
+  &.info {
+    @include flex-column(1em);
+
+    ul {
+      padding-left: 1.25em;
+    }
+  }
+}
