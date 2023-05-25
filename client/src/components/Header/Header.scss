@@ -1,17 +1,18 @@
 @import "../../styles/utilities";
 
 .site-header {
-  @include flex-row(17.5em);
+  @include flex-row();
   align-items: center;
   background-color: $white;
-  width: 100%;
+  justify-content: space-between;
   padding: 0.625em 11.25%;
+  width: 100%;
 }
 
 .logo {
-  @include flex-column(0);
-  justify-content: flex-start;
+  @include flex-column();
   color: $black;
+  justify-content: flex-start;
 
   &-author {
     color: #939394;
