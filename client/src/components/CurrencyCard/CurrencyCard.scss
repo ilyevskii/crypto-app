@@ -1,0 +1,60 @@
+@import "../../styles/utilities";
+
+
+.currency-card {
+  @include flex-column(3.25em);
+  @include border($grey-200, 1px, 0.75em);
+  background-color: $white;
+  color: $black;
+  font-family: Inter, sans-serif;
+  min-width: fit-content;
+  padding: 1.5625em;
+  width: 100%;
+
+  .add-currency-btn {
+    font-size: 2.25em;
+    line-height: 0.5em;
+  }
+
+  &-header {
+    @include flex-row();
+    align-items: center;
+    justify-content: space-between;
+
+    &-date {
+      @include flex-column();
+      align-items: center;
+    }
+
+    &-logo {
+      @include flex-column();
+      align-items: flex-start;
+
+      h2 {
+        font-size: 1.5em;
+      }
+
+      p {
+        color: $yellow-main-500;
+        font-size: 0.9em;
+        margin-top: -0.25em;
+      }
+    }
+  }
+
+  &-body {
+    @include flex-column(1.5em);
+
+    &-info {
+      display: grid;
+      grid-template-columns: auto auto auto;
+
+      p {
+        span:first-of-type {
+          padding-right: 1em;
+        }
+      }
+    }
+  }
+
+}
