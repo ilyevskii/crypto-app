@@ -6,13 +6,16 @@ body {
   background-color: $background-color;
 }
 
-.add-currency-btn {
+button:hover {
+  cursor: pointer;
+}
+
+.add-currency-control {
   color: $grey-600;
   font-size: 1.8em;
   transition: 0.25s ease;
 
   &:hover {
-    cursor: pointer;
     color: $yellow-main-500;
   }
 }

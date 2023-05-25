@@ -26,7 +26,7 @@ export function CryptoTableItem(props: TableItemProps) {
                 {currency.changePercent24Hr.slice(0, 5)}%
             </td>
             <td>
-                <button className="add-currency-btn bold">+</button>
+                <button className="add-currency-control bold">+</button>
             </td>
         </tr>
     );
