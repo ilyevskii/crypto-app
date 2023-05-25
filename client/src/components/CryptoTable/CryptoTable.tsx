@@ -1,6 +1,8 @@
 import React from 'react';
 import './CryptoTable.scss';
 
+import {CryptoTableItem} from "./CryptoTableItem/CryptoTableItem";
+
 
 export function CryptoTable() {
 
@@ -53,18 +55,7 @@ export function CryptoTable() {
             </thead>
             <tbody>
                 {crypto_currencies.map((currency: any, index) => (
-                    <tr className="crypto-table-item" key={currency.id}>
-                        <td>{index}</td>
-                        <td>{currency.name}</td>
-                        <td>{currency.symbol}</td>
-                        <td>{parseFloat(currency.priceUsd).toFixed(3)}</td>
-                        <td>{parseFloat(currency.vwap24Hr).toFixed(3)}</td>
-                        <td>{parseFloat(currency.volumeUsd24Hr).toFixed(3)}</td>
-                        <td className={`${currency.changePercent24Hr[0] === "-" ? "color-failure" : "color-success"}`}>
-                            {currency.changePercent24Hr.slice(0, 5)}%
-                        </td>
-                        <td><button className="add-currency-btn bold">+</button></td>
-                    </tr>
+                    <CryptoTableItem currency={currency} index={index} key={currency.id}/>
                 ))}
             </tbody>
         </table>

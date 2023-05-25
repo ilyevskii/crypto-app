@@ -1,0 +1,28 @@
+@import "../../../styles/utilities";
+
+
+.crypto-table-item {
+  border-bottom: 1px solid $grey-200;
+  text-align: center;
+  transition: 0.25s ease;
+
+  td {
+    @include border($grey-300);
+
+    .add-currency-btn {
+      color: $grey-600;
+      font-size: 1.8em;
+      transition: 0.25s ease;
+
+      &:hover {
+        cursor: pointer;
+        color: $yellow-main-500;
+      }
+    }
+  }
+
+  &:hover {
+    background-color: $grey-100;
+    cursor: pointer;
+  }
+}
