@@ -6,9 +6,25 @@ body {
   background-color: $background-color;
 }
 
+.add-currency-btn {
+  color: $grey-600;
+  font-size: 1.8em;
+  transition: 0.25s ease;
+
+  &:hover {
+    cursor: pointer;
+    color: $yellow-main-500;
+  }
+}
+
 .container {
   @include flex-row(1.875em);
   justify-content: space-between;
   padding: 1.875em 0;
   margin: 0 11.25%;
+
+  &.narrow {
+    padding: 1.875em 0;
+    margin: 0 23%;
+  }
 }

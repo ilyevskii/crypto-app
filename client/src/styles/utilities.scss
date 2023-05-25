@@ -1,6 +1,18 @@
 @import "./constants";
 
 
+@mixin border($border-color, $border-size: 1px, $border-radius: 0) {
+
+  @if $border-color != none {
+    border: $border-size solid $border-color;
+  }
+  @else {
+    border: none;
+  }
+
+  border-radius: $border-radius;
+}
+
 @mixin flex-column($gap: 0) {
   display: flex;
   flex-direction: column;
@@ -34,4 +46,9 @@
   &-failure {
     color: $failure-red;
   }
+
+  &-grey {
+    color: $grey-500;
+  }
 }
+
