@@ -1,6 +1,8 @@
 import React, {useEffect} from 'react';
 import './CurrencyCard.scss';
 
+import {ChangesSchedule} from "./ChangesSchedule/ChangesSchedule";
+
 
 export function CurrencyCard() {
 
@@ -51,6 +53,7 @@ export function CurrencyCard() {
                         <p><span className="color-grey">VOLUME</span> <span>&#36;{currency.volumeUsd24Hr.slice(0,6)}</span></p>
                         <p><span className="color-grey">SUPPLY</span> <span>&#36;{currency.volumeUsd24Hr.slice(0,6)}</span></p>
                     </div>
+                    <ChangesSchedule/>
                 </div>
             </div>
         </main>
