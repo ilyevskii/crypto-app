@@ -21,7 +21,9 @@
     "jsx": "react-jsx",
     "baseUrl": "src",
     "paths": {
-      "components": ["./components/index.ts"]
+      "components": ["./components/index.ts"],
+      "contexts": ["./contexts/index.ts"],
+      "hooks": ["./hooks/index.ts"]
     }
   },
   "include": [
