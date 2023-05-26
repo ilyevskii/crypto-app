@@ -24,4 +24,28 @@ export class CoincapService {
         }
     }
 
+    public static async getCurrencyInfo(id: string): Promise<ResultType> {
+
+        try {
+            const info_response = await axios.get(`${this.url}/assets/${id}`, {headers: {"Content-Type": "application/json"}});
+            const changes_response = await axios.get(`${this.url}/assets/${id}/history?interval=m1`,
+                {headers: {"Content-Type": "application/json"}}
+            );
+
+            return {
+                type: "success",
+                data: {
+                    info: UtilitiesService.transformCurrency(info_response.data.data, true, info_response.data.timestamp),
+                    changes: UtilitiesService.transformHistory(changes_response.data.data)
+                }
+            }
+        }
+        catch (err: any) {
+            return {
+                type: "error",
+                data: ""
+            }
+        }
+    }
+
 }
