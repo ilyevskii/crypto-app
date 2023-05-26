@@ -1,8 +1,8 @@
 import {Dispatch, ReactNode} from "react";
 
 export interface Portfolio {
-    total_investments: number,
-    total_currencies: number
+    initial_investments: number;
+    current_investments: number;
 }
 
 export interface PortfolioCurrency {
@@ -10,7 +10,6 @@ export interface PortfolioCurrency {
     amount: number;
     initial_investments: number;
     current_investments: number;
-    previous_rate: number;
 }
 
 export interface AuthContextProviderProps {

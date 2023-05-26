@@ -6,7 +6,7 @@ import {Portfolio, PortfolioContextInterface, AuthContextProviderProps, Portfoli
 
 const INITIAL_STATE : PortfolioContextInterface = {
     portfolio: localStorage.getItem("portfolio") ? JSON.parse(localStorage.getItem("portfolio")!) :
-                    {total_investments: 0, total_currencies: 0} as Portfolio,
+                    {current_investments: 0, initial_investments: 0} as Portfolio,
     currencies: localStorage.getItem("currencies") ? JSON.parse(localStorage.getItem("currencies")!) : [] as PortfolioCurrency[],
     setPortfolio: () => {},
     setCurrencies: () => {},
