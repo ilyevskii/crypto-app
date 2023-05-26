@@ -1,5 +1,8 @@
 import React from 'react';
 import './ChangesSchedule.scss';
+import {HistoryItem} from "services";
+import {ModifiedHistory} from "../../../services/CoincapService/Types";
+
 
 import {Line} from 'react-chartjs-2';
 import {
@@ -14,6 +17,7 @@ import {
     Legend,
 } from 'chart.js';
 
+
 Chart.register(
     CategoryScale,
     LinearScale,
@@ -25,11 +29,16 @@ Chart.register(
     Legend
 );
 
-export function ChangesSchedule() {
+interface Props {
+    changes: ModifiedHistory;
+    profit: boolean;
+}
 
-    const hours = ['1AM', '1AM', '1AM', '1AM', '1AM', '1AM', '1AM'];
-    const prices = [200, 345, 400, 600, 200, 500, 234, 900];
-    const {min, max, profit} = {min: 0, max: 1000, profit: true};
+
+export function ChangesSchedule(props: Props) {
+
+
+    const {hours, prices, min, max} = props.changes;
 
     const options={
         responsive: true,
@@ -46,7 +55,7 @@ export function ChangesSchedule() {
         }
     }
 
-    const changes = {
+    const change = {
         labels: hours,
         datasets: [
             {
@@ -54,13 +63,13 @@ export function ChangesSchedule() {
                 data: hours.map((value, index) => prices[index]),
                 pointRadius: 0,
                 pointHoverRadius: 5,
-                borderColor: profit ? 'rgb(244, 67, 54)' : 'rgb(24, 198, 131)',
-                backgroundColor: profit ? 'rgb(244, 67, 54, 0.2)' : 'rgba(24, 198, 131, 0.2)',
+                borderColor: props.profit ? 'rgb(24, 198, 131)' : 'rgb(244, 67, 54)',
+                backgroundColor: props.profit ? 'rgba(24, 198, 131, 0.2)' : 'rgb(244, 67, 54, 0.2)',
             },
         ],
     };
 
     return (
-        <Line options={options} data={changes} className="changes-schedule"/>
+        <Line options={options} data={change} className="changes-schedule"/>
     );
 }
