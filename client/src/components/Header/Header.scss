@@ -7,30 +7,41 @@
   justify-content: space-between;
   padding: 0.625em 11.25%;
   width: 100%;
-}
 
-.logo {
-  @include flex-column();
-  color: $black;
-  justify-content: flex-start;
+  .logo {
+    @include flex-column();
+    color: $black;
+    justify-content: flex-start;
 
-  &-author {
-    color: #939394;
-    font-size: 0.75em;
-    font-weight: 300;
-    margin-top: -0.5em;
-    padding-left: 0.15em;
-  }
+    &-author {
+      color: #939394;
+      font-size: 0.75em;
+      font-weight: 300;
+      margin-top: -0.5em;
+      padding-left: 0.15em;
+    }
 
-  &-text {
-    font-size: 1.75em;
+    &-text {
+      font-size: 1.75em;
 
-    span {
-      color: $yellow-main-500;
+      span {
+        color: $yellow-main-500;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
     }
   }
 
-  &:hover {
-    cursor: pointer;
+  .portfolio-info-btn {
+    border-radius: 1.5em;
+    padding: 0.4em 0.75em;
+    transition: 0.25s ease;
+
+    &:hover {
+      background-color: $grey-200;
+    }
   }
+
 }
