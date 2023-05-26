@@ -19,6 +19,43 @@ input:focus {
   border-color: $yellow-200;
 }
 
+table {
+  background-color: $white;
+  width: 100%;
+  border-collapse: collapse;
+
+  .table-header {
+    tr {
+      th {
+        @include border($grey-300);
+        font-size: 1.1em;
+        padding: 0.4em 2em;
+      }
+
+      &:hover {
+        background-color: $white;
+        cursor: initial;
+      }
+    }
+  }
+
+  tr {
+    border-bottom: 1px solid $grey-200;
+    text-align: center;
+    transition: 0.25s ease;
+
+    td {
+      @include border($grey-300);
+      padding: 0.3em 0;
+    }
+
+    &:hover {
+      background-color: $grey-100;
+      cursor: pointer;
+    }
+  }
+}
+
 .add-currency-control {
   color: $grey-600;
   font-size: 1.8em;

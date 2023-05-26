@@ -1,5 +1,4 @@
 import React, {MouseEvent, useState} from 'react';
-import './CryptoTable.scss';
 
 import {CryptoTableItem, ModalWindow, AddCurrencyWindow} from 'components';
 
@@ -65,17 +64,17 @@ export function CryptoTable() {
             {currency && <ModalWindow child={<AddCurrencyWindow currency={currency}/>} onClose={handleControllerClick}/>}
 
             <table className="crypto-table">
-                <thead className="crypto-table-header">
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Symbol</th>
-                    <th>Price (USD)</th>
-                    <th>VWAP (24Hr)	</th>
-                    <th>Vol (24Hr)</th>
-                    <th>Chg (24Hr)</th>
-                    <th>Buy</th>
-                </tr>
+                <thead className="table-header">
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Symbol</th>
+                        <th>Price (USD)</th>
+                        <th>VWAP (24Hr)	</th>
+                        <th>Vol (24Hr)</th>
+                        <th>Chg (24Hr)</th>
+                        <th>Buy</th>
+                    </tr>
                 </thead>
                 <tbody>
                 {crypto_currencies.map((currency: Currency) => (
