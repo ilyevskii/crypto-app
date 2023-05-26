@@ -1,0 +1,26 @@
+@import "../../styles/utilities";
+
+.modal {
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
+  &-content {
+    @include border($grey-200, 1px, 0.75em);
+    background-color: $white;
+    color: $black;
+    margin: 20% auto;
+    padding: 0.5em;
+    position: relative;
+    width: fit-content;
+
+    .modal-close-btn {
+      position: absolute;
+      right: 0.5em;
+      top: 0.5em;
+    }
+  }
+}
