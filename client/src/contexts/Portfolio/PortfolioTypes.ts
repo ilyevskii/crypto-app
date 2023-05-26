@@ -5,7 +5,7 @@ export interface Portfolio {
     total_currencies: number
 }
 
-export interface Currency {
+export interface PortfolioCurrency {
     id: string;
     amount: number;
     initial_investments: number;
@@ -19,7 +19,7 @@ export interface AuthContextProviderProps {
 
 export interface PortfolioContextInterface {
     portfolio: Portfolio;
-    currencies: Currency[];
+    currencies: PortfolioCurrency[];
     setPortfolio: (payload: any) => void;
     setCurrencies: (payload: any) => void;
     dispatch: Dispatch<Action>;
@@ -27,11 +27,11 @@ export interface PortfolioContextInterface {
 
 export interface PortfolioState{
     portfolio: Portfolio;
-    currencies: Currency[];
+    currencies: PortfolioCurrency[];
 }
 
 export interface Action {
     type: string;
     portfolio_payload?: Portfolio;
-    currencies_payload?: Currency[];
+    currencies_payload?: PortfolioCurrency[];
 }
