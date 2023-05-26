@@ -1,8 +1,11 @@
 @import "../../styles/utilities";
 
 .modal {
-  background-color: rgba(245, 245, 245, 0.5);
+  @include flex-row();
+  align-items: center;
+  background-color: rgba(190, 190, 190, 0.5);
   height: 100%;
+  justify-content: center;
   left: 0;
   position: fixed;
   top: 0;
@@ -13,7 +16,7 @@
     @include border($grey-200, 1px, 0.75em);
     background-color: $white;
     color: $black-300;
-    margin: 20% auto;
+    margin: auto;
     padding: 1.25em 1.5em;
     position: relative;
     width: fit-content;
