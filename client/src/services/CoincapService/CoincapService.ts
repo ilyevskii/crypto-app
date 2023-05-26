@@ -1,11 +1,13 @@
 import axios from "axios";
 import {UtilitiesService} from "./UtilitiesService";
 import {ResultType} from "./Types";
+import {PortfolioCurrency} from "contexts";
 
 
 export class CoincapService {
 
     private static readonly url: string = "https://api.coincap.io/v2";
+
 
     public static async getAllCurrencies(): Promise<ResultType> {
 
@@ -24,6 +26,7 @@ export class CoincapService {
         }
     }
 
+
     public static async getHeaderCurrencies(): Promise<ResultType> {
 
         try {
@@ -40,6 +43,25 @@ export class CoincapService {
             }
         }
     }
+
+
+    public static async getCurrencyRate(id: string): Promise<ResultType> {
+
+        try {
+            const response = await axios.get(`${this.url}/rates/${id}`, {headers: {"Content-Type": "application/json"}});
+            return {
+                type: "success",
+                data: response.data.data.rateUsd
+            }
+        }
+        catch (err: any) {
+            return {
+                type: "error",
+                data: ""
+            }
+        }
+    }
+
 
     public static async getCurrencyInfo(id: string): Promise<ResultType> {
 
