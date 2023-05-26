@@ -17,7 +17,7 @@ export function AddCurrencyWindow(props: CurrencyWindowProps) {
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        addCurrency(currency.id, currency.priceUsd, Number(value));
+        addCurrency(currency.id, currency.name, currency.priceUsd, Number(value));
         (document.querySelector(".modal-close-btn") as HTMLButtonElement).click();
     }
 

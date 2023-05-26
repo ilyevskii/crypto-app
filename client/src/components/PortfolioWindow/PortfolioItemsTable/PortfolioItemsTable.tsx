@@ -23,11 +23,10 @@ export function PortfolioItemsTable() {
                     <thead className="table-header">
                     <tr>
                         <th>Name</th>
-                        <th>Price</th>
                         <th>Amount</th>
                         <th>Invested</th>
                         <th>Current</th>
-                        <th>Profit (USD)</th>
+                        <th>Profit</th>
                         <th>Profit (%)</th>
                         <th>Sell</th>
                     </tr>

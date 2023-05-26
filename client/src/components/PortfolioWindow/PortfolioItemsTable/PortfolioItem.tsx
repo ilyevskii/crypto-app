@@ -17,15 +17,14 @@ export function PortfolioItem(props: PortfolioItemProps) {
 
     return (
         <tr className="portfolio-item">
-            <td>{currency.id}</td>
-            <td>{currency.id}</td>
+            <td>{currency.name}</td>
             <td>{currency.amount}</td>
-            <td>{Number(currency.initial_investments).toFixed(3)}</td>
-            <td>{Number(currency.current_investments).toFixed(3)}</td>
-            <td>{Number(currency.current_investments).toFixed(3)}</td>
-            <td>{Number(currency.current_investments).toFixed(3)}</td>
+            <td>{+(currency.initial_investments).toFixed(2)} &#36;</td>
+            <td>{+(currency.current_investments).toFixed(2)} &#36;</td>
+            <td>{+(currency.current_investments - currency.initial_investments).toFixed(2)} &#36;</td>
+            <td>{+((currency.current_investments - currency.initial_investments)/currency.initial_investments).toFixed(3)} %</td>
             <td>
-                <button className="toggle-currency-control-btn" onClick={() => removeCurrency(currency.id, "1")}>
+                <button className="toggle-currency-control-btn" onClick={() => removeCurrency(currency.id)}>
                     -
                 </button>
             </td>
