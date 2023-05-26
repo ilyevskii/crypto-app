@@ -1,4 +1,4 @@
-import {Currency, HistoryItem} from "./Types";
+import {Currency, HeaderCurrency, HistoryItem} from "./Types";
 
 
 export class UtilitiesService {
@@ -55,6 +55,16 @@ export class UtilitiesService {
             max: max * 1.01,
             hours: hours,
             prices: prices
+        }
+    }
+
+    public static transformHeaderCurrency(currency: any): HeaderCurrency {
+        return {
+            id: currency.id,
+            name: currency.name,
+            priceUsd: UtilitiesService.sliceNum(currency.priceUsd),
+            profit: !currency.changePercent24Hr?.startsWith("-"),
+            changePercent24Hr: UtilitiesService.sliceNum(currency.changePercent24Hr),
         }
     }
 
