@@ -1,9 +1,9 @@
-import React, {MouseEvent, ReactNode} from 'react';
+import React, {MouseEvent, ReactElement} from 'react';
 import './ModalWindow.scss';
 
 
 interface ModalWindowProps {
-    child: ReactNode,
+    child: ReactElement,
     onClose: (event: MouseEvent) => void;
 }
 
@@ -19,7 +19,7 @@ export function ModalWindow(props: ModalWindowProps) {
                     className="modal-close-btn"
                     type="button"
                     onClick={onClose}>&times;</button>
-                {child}
+                {React.cloneElement(child, {onClose: onClose})}
             </div>
         </div>
     );

@@ -44,7 +44,7 @@ export function CurrencyCard() {
                         <span>{currency.time}</span>
                     </p>
                     <button
-                        className="add-currency-control"
+                        className="toggle-currency-control-btn"
                         type="button"
                         onClick={handleBuyClick}>+</button>
                 </div>
