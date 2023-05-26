@@ -1,7 +1,8 @@
 import React from 'react';
 import './AddCurrencyWindow.scss';
-import {usePortfolioFunctions} from "../../hooks/utilityHooks/usePortfolioFunctions";
-import {Currency} from "../CryptoTable/CryptoTable";
+
+import {usePortfolioFunctions} from 'hooks';
+import {Currency} from 'components';
 
 interface CurrencyWindowProps {
     currency: Currency;
@@ -17,6 +18,7 @@ export function AddCurrencyWindow(props: CurrencyWindowProps) {
         event.preventDefault();
         addCurrency(currency.id, currency.priceUsd, 10);
     }
+
 
 
     return (

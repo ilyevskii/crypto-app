@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import './CurrencyCard.scss';
 
-import {ModalWindow, ChangesSchedule} from 'components';
-import {AddCurrencyWindow} from "../AddCurrencyWindow/AddCurrencyWindow";
+import {ModalWindow, ChangesSchedule, AddCurrencyWindow} from 'components';
 
 
 export function CurrencyCard() {

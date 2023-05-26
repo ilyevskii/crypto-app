@@ -1,8 +1,8 @@
 import React, {MouseEvent} from 'react';
 import './CryptoTableItem.scss';
 
-import {useNavigate} from "react-router-dom";
-import {Currency} from "../CryptoTable";
+import {useNavigate} from 'react-router-dom';
+import {Currency} from 'components';
 
 interface TableItemProps {
     currency: Currency;

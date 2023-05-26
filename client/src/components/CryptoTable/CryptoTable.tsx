@@ -1,9 +1,7 @@
 import React, {MouseEvent, useState} from 'react';
 import './CryptoTable.scss';
 
-import {CryptoTableItem} from "./CryptoTableItem/CryptoTableItem";
-import {ModalWindow} from "../ModalWindow/ModalWindow";
-import {AddCurrencyWindow} from "../AddCurrencyWindow/AddCurrencyWindow";
+import {CryptoTableItem, ModalWindow, AddCurrencyWindow} from 'components';
 
 export interface Currency {
     id: string,
@@ -15,6 +13,7 @@ export interface Currency {
     vwap24Hr: string,
     volumeUsd24Hr: string
 }
+
 
 export function CryptoTable() {
 
