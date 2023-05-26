@@ -1,16 +1,18 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Header.scss';
 
 import {useNavigate} from "react-router-dom";
 import {Menu} from "./Menu/Menu";
 import {ModalWindow} from "../ModalWindow/ModalWindow";
 import {PortfolioWindow} from "../PortfolioWindow/PortfolioWindow";
+import {usePortfolioFunctions} from "hooks";
 
 
 export function Header() {
 
     const [portfolioOpened, setPortfolioOpened] = useState<boolean>(false);
     const navigate = useNavigate();
+    const {portfolio, getDifferences} = usePortfolioFunctions();
 
     const handlePortfolioClick = () => {
         setPortfolioOpened(state => !state);
@@ -26,7 +28,10 @@ export function Header() {
                 </div>
                 <Menu/>
                 <button className="portfolio-info-btn" onClick={handlePortfolioClick}>
-                    134,32 <span className="semi-bold">USD</span> <span className="color-success">+2,38 (1,80 %)</span>
+                    <p>Balance: <span className="semi-bold">{portfolio.current_investments.toFixed(3)}$</span></p>
+                    <p className={`color-${getDifferences().profit ? 'success' : 'failure'}`}>
+                        {getDifferences().differenceUsd}&#36; ({getDifferences().differencePercent}%)
+                    </p>
                 </button>
             </header>
         </>

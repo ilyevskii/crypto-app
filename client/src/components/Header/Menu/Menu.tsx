@@ -14,7 +14,7 @@ export function Menu() {
                 {!is_header_currencies_loading && header_currencies ?
                     <>
                         {header_currencies.map((currency: HeaderCurrency) => (
-                            <li className={`menu-item`}>
+                            <li className={`menu-item`} key={currency.id}>
                                 <p>{currency.name}: <span className="semi-bold">{currency.priceUsd}$</span></p>
                                 <p className={`color-${currency.profit ? 'success' : 'failure'}`}>
                                     {currency.changePercent24Hr}%

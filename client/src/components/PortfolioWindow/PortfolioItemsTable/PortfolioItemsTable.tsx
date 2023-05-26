@@ -34,7 +34,7 @@ export function PortfolioItemsTable() {
                     </thead>
                     <tbody>
                     {currencies.map((currency: PortfolioCurrency) => (
-                        <PortfolioItem currency={currency}/>
+                        <PortfolioItem currency={currency} key={currency.id}/>
                     ))}
                     </tbody>
                 </table>
