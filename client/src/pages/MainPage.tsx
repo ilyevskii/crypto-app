@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {CryptoTable} from "components";
+import {CryptoTable, Pagination} from "components";
 
 
 export function MainPage() {
@@ -8,6 +8,7 @@ export function MainPage() {
     return (
         <main className="container">
             <CryptoTable/>
+            <Pagination total={50}/>
         </main>
     );
 }

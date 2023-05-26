@@ -1,0 +1,16 @@
+@import "../../styles/utilities";
+
+.pagination {
+  justify-content: center;
+
+  .control {
+
+    &[data-active] {
+      background-color: $yellow-main-500;
+
+      &:hover {
+        background-color: $yellow-main-500;
+      }
+    }
+  }
+}
