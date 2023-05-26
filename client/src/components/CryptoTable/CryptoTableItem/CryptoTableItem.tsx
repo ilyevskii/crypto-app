@@ -1,7 +1,7 @@
 import React, {MouseEvent} from 'react';
 
 import {useNavigate} from 'react-router-dom';
-import {Currency} from 'components';
+import {Currency} from 'services';
 
 interface TableItemProps {
     currency: Currency;
@@ -27,15 +27,16 @@ export function CryptoTableItem(props: TableItemProps) {
                 <td>{currency.rank}</td>
                 <td>{currency.name}</td>
                 <td>{currency.symbol}</td>
-                <td>{parseFloat(currency.priceUsd).toFixed(3)}</td>
-                <td>{parseFloat(currency.vwap24Hr).toFixed(3)}</td>
-                <td>{parseFloat(currency.volumeUsd24Hr).toFixed(3)}</td>
-                <td className={`color-${currency.changePercent24Hr[0] === "-" ? "failure" : "success"}`}>
-                    {currency.changePercent24Hr.slice(0, 5)}%
+                <td>{currency.priceUsd}</td>
+                <td>{currency.supply}</td>
+                <td>{currency.vwap24Hr}</td>
+                <td>{currency.volumeUsd24Hr}</td>
+                <td className={`color-${currency.profit ? "success" : "failure"}`}>
+                    {currency.changePercent24Hr}%
                 </td>
                 <td>
                     <button
-                        className="add-currency-control bold"
+                        className="toggle-currency-control-btn bold"
                         onClick={(event: MouseEvent) => {handleClick(event, currency)}}
                     >+</button>
                 </td>

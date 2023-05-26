@@ -1,22 +1,15 @@
-import React, {MouseEvent, useState} from 'react';
+import React, {MouseEvent, useEffect, useState} from 'react';
 
 import {CryptoTableItem, ModalWindow, AddCurrencyWindow} from 'components';
-
-export interface Currency {
-    id: string,
-    rank: string,
-    symbol: string,
-    name: string,
-    priceUsd: string,
-    changePercent24Hr: string,
-    vwap24Hr: string,
-    volumeUsd24Hr: string
-}
+import {Currency} from 'services';
+import {useAllCurrencies, useSearchParams} from 'hooks';
 
 
 export function CryptoTable() {
 
+    const {page} = useSearchParams();
     const [currency, setCurrency] = useState<Currency | null>(null);
+    const {crypto_currencies, is_crypto_currencies_loading, refresh_currencies} = useAllCurrencies();
 
     const handleControllerClick = (event: MouseEvent, currency?: Currency | null) => {
         if (currency) setCurrency(currency);
@@ -24,64 +17,39 @@ export function CryptoTable() {
         event.stopPropagation();
     }
 
-    const crypto_currencies = [
-        {
-            id: "bitcoin",
-            rank: "1",
-            symbol: "BTC",
-            name: "Bitcoin",
-            priceUsd: "6929.8217756835584756",
-            changePercent24Hr: "+0.8101417214350335",
-            vwap24Hr: "7175.0663247679233209",
-            volumeUsd24Hr: "2927959461.1750323310959460"
-        },
-        {
-            id: "ethereum",
-            rank: "2",
-            symbol: "ETH",
-            name: "Ethereum",
-            priceUsd: "404.9774667045200896",
-            changePercent24Hr: "-0.0999626159535347",
-            vwap24Hr: "7175.0663247679233209",
-            volumeUsd24Hr: "2927959461.1750323310959460"
-        },
-        {
-            id: "ripple",
-            rank: "3",
-            symbol: "XRP",
-            name: "XRP",
-            priceUsd: "0.4202870472643482",
-            changePercent24Hr: "-1.9518258685302665",
-            vwap24Hr: "7175.0663247679233209",
-            volumeUsd24Hr: "2927959461.1750323310959460"
-        }
-
-    ]
+    useEffect(() => {
+        refresh_currencies();
+    }, [page])
 
 
     return (
         <>
             {currency && <ModalWindow child={<AddCurrencyWindow currency={currency}/>} onClose={handleControllerClick}/>}
 
-            <table className="crypto-table">
-                <thead className="table-header">
+            {!is_crypto_currencies_loading && crypto_currencies ?
+                <table className="crypto-table">
+                    <thead className="table-header">
                     <tr>
                         <th>#</th>
                         <th>Name</th>
                         <th>Symbol</th>
                         <th>Price (USD)</th>
+                        <th>Supply</th>
                         <th>VWAP (24Hr)	</th>
                         <th>Vol (24Hr)</th>
                         <th>Chg (24Hr)</th>
                         <th>Buy</th>
                     </tr>
-                </thead>
-                <tbody>
-                {crypto_currencies.map((currency: Currency) => (
-                    <CryptoTableItem currency={currency} handleClick={handleControllerClick} key={currency.id}/>
-                ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    {crypto_currencies.map((currency: Currency) => (
+                        <CryptoTableItem currency={currency} handleClick={handleControllerClick} key={currency.id}/>
+                    ))}
+                    </tbody>
+                </table>
+                :
+                <div>Loading...</div>
+            }
         </>
     );
 }

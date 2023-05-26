@@ -2,7 +2,7 @@ import React from 'react';
 import './AddCurrencyWindow.scss';
 
 import {usePortfolioFunctions} from 'hooks';
-import {Currency} from 'components';
+import {Currency} from 'services';
 
 interface CurrencyWindowProps {
     currency: Currency;
