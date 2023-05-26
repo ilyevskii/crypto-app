@@ -1,10 +1,13 @@
-import React, {useEffect} from 'react';
+import React, {useState} from 'react';
 import './CurrencyCard.scss';
 
-import {ChangesSchedule} from "./ChangesSchedule/ChangesSchedule";
+import {ModalWindow, ChangesSchedule} from 'components';
+import {AddCurrencyWindow} from "../AddCurrencyWindow/AddCurrencyWindow";
 
 
 export function CurrencyCard() {
+
+    const [modalOpened, setModalOpened] = useState<boolean>(false);
 
     const currency = {
         "id": "bitcoin",
@@ -23,15 +26,14 @@ export function CurrencyCard() {
         "time": "12:00"
     }
 
-    useEffect(() => {
-        const date = new Date(currency.timestamp);
-        currency.date = date.toLocaleDateString("en-GB", {day: "numeric", month: "long", year: "numeric"})
-    }, [])
-
+    const handleBuyClick = () => {
+        setModalOpened(state => !state);
+    }
 
 
     return (
         <main className="container narrow">
+            {modalOpened && <ModalWindow child={<AddCurrencyWindow currency={currency}/>} onClose={handleBuyClick}/>}
             <div className="currency-card">
                 <div className="currency-card-header">
                     <div className="currency-card-header-logo">
@@ -42,7 +44,10 @@ export function CurrencyCard() {
                         <span>{currency.date}</span>
                         <span>{currency.time}</span>
                     </p>
-                    <button className="add-currency-control">+</button>
+                    <button
+                        className="add-currency-control"
+                        type="button"
+                        onClick={handleBuyClick}>+</button>
                 </div>
                 <div className="currency-card-body">
                     <div className="currency-card-body-info semi-bold">
@@ -55,7 +60,10 @@ export function CurrencyCard() {
                     </div>
                     <ChangesSchedule/>
                 </div>
-                <button className="add-currency-btn">Buy Currency</button>
+                <button
+                    className="styled-btn"
+                    type="button"
+                    onClick={handleBuyClick}>Buy Currency</button>
             </div>
         </main>
     );

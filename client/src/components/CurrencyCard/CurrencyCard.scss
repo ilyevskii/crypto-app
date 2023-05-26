@@ -58,21 +58,4 @@
     }
   }
 
-  .add-currency-btn {
-    background-color: $yellow-main-500;
-    border-radius: 15%/50%;
-    box-shadow: $grey-400 0 1px;
-    color: #2E2E34;
-    font-size: 0.9em;
-    font-weight: 600;
-    margin: auto;
-    padding: 0.8em 1.6em;
-    transition: 0.2s ease;
-    width: fit-content;
-
-    &:hover {
-      transform: translateY(-3px);
-    }
-  }
-
 }
