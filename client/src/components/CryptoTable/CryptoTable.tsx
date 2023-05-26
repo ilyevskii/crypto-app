@@ -1,14 +1,35 @@
-import React from 'react';
+import React, {MouseEvent, useState} from 'react';
 import './CryptoTable.scss';
 
 import {CryptoTableItem} from "./CryptoTableItem/CryptoTableItem";
+import {ModalWindow} from "../ModalWindow/ModalWindow";
+import {AddCurrencyWindow} from "../AddCurrencyWindow/AddCurrencyWindow";
 
+export interface Currency {
+    id: string,
+    rank: string,
+    symbol: string,
+    name: string,
+    priceUsd: string,
+    changePercent24Hr: string,
+    vwap24Hr: string,
+    volumeUsd24Hr: string
+}
 
 export function CryptoTable() {
+
+    const [currency, setCurrency] = useState<Currency | null>(null);
+
+    const handleControllerClick = (event: MouseEvent, currency?: Currency | null) => {
+        if (currency) setCurrency(currency);
+        else setCurrency(null);
+        event.stopPropagation();
+    }
 
     const crypto_currencies = [
         {
             id: "bitcoin",
+            rank: "1",
             symbol: "BTC",
             name: "Bitcoin",
             priceUsd: "6929.8217756835584756",
@@ -18,6 +39,7 @@ export function CryptoTable() {
         },
         {
             id: "ethereum",
+            rank: "2",
             symbol: "ETH",
             name: "Ethereum",
             priceUsd: "404.9774667045200896",
@@ -27,6 +49,7 @@ export function CryptoTable() {
         },
         {
             id: "ripple",
+            rank: "3",
             symbol: "XRP",
             name: "XRP",
             priceUsd: "0.4202870472643482",
@@ -39,9 +62,11 @@ export function CryptoTable() {
 
 
     return (
+        <>
+            {currency && <ModalWindow child={<AddCurrencyWindow currency={currency}/>} onClose={handleControllerClick}/>}
 
-        <table className="crypto-table">
-            <thead className="crypto-table-header">
+            <table className="crypto-table">
+                <thead className="crypto-table-header">
                 <tr>
                     <th>#</th>
                     <th>Name</th>
@@ -52,13 +77,13 @@ export function CryptoTable() {
                     <th>Chg (24Hr)</th>
                     <th>Buy</th>
                 </tr>
-            </thead>
-            <tbody>
-                {crypto_currencies.map((currency: any, index) => (
-                    <CryptoTableItem currency={currency} index={index} key={currency.id}/>
+                </thead>
+                <tbody>
+                {crypto_currencies.map((currency: Currency) => (
+                    <CryptoTableItem currency={currency} handleClick={handleControllerClick} key={currency.id}/>
                 ))}
-            </tbody>
-        </table>
-
+                </tbody>
+            </table>
+        </>
     );
 }

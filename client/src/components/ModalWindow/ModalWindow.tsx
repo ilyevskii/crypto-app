@@ -1,10 +1,10 @@
-import React, {ReactNode} from 'react';
+import React, {MouseEvent, ReactNode} from 'react';
 import './ModalWindow.scss';
 
 
 interface ModalWindowProps {
     child: ReactNode,
-    onClose: () => void;
+    onClose: (event: MouseEvent) => void;
 }
 
 

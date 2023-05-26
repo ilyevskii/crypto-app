@@ -1,17 +1,21 @@
 import React from 'react';
 import './AddCurrencyWindow.scss';
+import {usePortfolioFunctions} from "../../hooks/utilityHooks/usePortfolioFunctions";
+import {Currency} from "../CryptoTable/CryptoTable";
 
 interface CurrencyWindowProps {
-    currency: any;
+    currency: Currency;
 }
+
 
 export function AddCurrencyWindow(props: CurrencyWindowProps) {
 
     const {currency} = props;
-
+    const {addCurrency} = usePortfolioFunctions();
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
+        addCurrency(currency.id, currency.priceUsd, 10);
     }
 
 
