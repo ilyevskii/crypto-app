@@ -1,87 +1,102 @@
 import {usePortfolio, PortfolioCurrency} from "contexts";
-import {CoincapService} from "services";
-
+import {Currency} from "services";
 
 export const usePortfolioFunctions = () => {
 
-    const {portfolio, setPortfolio, currencies, setCurrencies} = usePortfolio();
+    const {portfolio, setPortfolio} = usePortfolio();
 
 
-    const addCurrency = (currency_id: string, name:string, rate: string, amount: number) => {
-        portfolio.current_investments += amount * Number(rate);
-        portfolio.initial_investments += amount * Number(rate);
+    const addPortfolioCurrency = (currency: Currency, amount: number): void => {
 
-        if (currencies.some((currency: PortfolioCurrency) => currency.id === currency_id)) {
-            currencies.map((saved_currency: PortfolioCurrency) => {
-                if (saved_currency.id === currency_id) {
+        if (portfolio.currencies.some((saved_currency: PortfolioCurrency) => saved_currency.id === currency.id)) {
+            portfolio.currencies.map((saved_currency: PortfolioCurrency) => {
+                if (saved_currency.id === currency.id) {
                     saved_currency.amount += amount;
-                    saved_currency.current_investments += amount * Number(rate);
+                    saved_currency.initial_investments = (+saved_currency.initial_investments + amount * +currency.priceUsd).toFixed(3);
+                    saved_currency.current_investments = (+saved_currency.current_investments! + amount * +currency.priceUsd).toFixed(3);
                 }
             })
         }
         else {
-            currencies.push({
-                id: currency_id,
-                name: name,
+            portfolio.currencies.push({
+                id: currency.id,
+                name: currency.name,
+                rank: currency.rank,
                 amount: amount,
-                initial_investments: amount * Number(rate),
-                current_investments: amount * Number(rate),
+                priceUsd: currency.priceUsd,
+                is_profit: true,
+                initial_investments: (amount * +currency.priceUsd).toFixed(3),
+                current_investments: (amount * +currency.priceUsd).toFixed(3),
+                difference_usd: "0.000",
+                difference_percent: "0.000"
             });
         }
 
-        setCurrencies(currencies);
+        setPortfolio(portfolio);
+        updatePortfolioInfo();
+    }
+
+    const removePortfolioCurrency = (currency_id: string): void => {
+
+        if (portfolio.currencies.some((currency: PortfolioCurrency) => currency.id === currency_id)) {
+            portfolio.currencies = portfolio.currencies.filter((saved_currency: PortfolioCurrency) => {
+                return saved_currency.id !== currency_id;
+            })
+
+            setPortfolio(portfolio);
+            updatePortfolioInfo();
+        }
+    }
+
+    const updatePortfolioInfo = (): void => {
+        portfolio.balance = "0";
+        portfolio.difference_usd = "+0";
+
+        for (let currency of portfolio.currencies) {
+            portfolio.balance = (+portfolio.balance + +currency.current_investments!).toFixed(3);
+            portfolio.difference_usd = (currency.is_profit ? "+" : "") +
+                                       (+portfolio.difference_usd + +currency.difference_usd!).toFixed(3);
+        }
+
+        portfolio.is_profit = +portfolio.difference_usd >= 0;
+        portfolio.difference_percent = (portfolio.is_profit ? "+" : "") +
+                                       (+portfolio.difference_usd / +portfolio.balance || 0).toFixed(3);
+
         setPortfolio(portfolio);
     }
 
-    const removeCurrency = (currency_id: string) => {
+    const updatePortfolioCurrencies = (currencies: any[]): void => {
 
-        if (currencies.some((currency: PortfolioCurrency) => currency.id === currency_id)) {
-            let new_currencies = currencies.filter((saved_currency: PortfolioCurrency) => {
-                if (saved_currency.id === currency_id) {
-                    portfolio.current_investments -= saved_currency.current_investments;
-                    portfolio.initial_investments -= saved_currency.initial_investments;
-                    return false;
-                }
-                else {
-                    return true;
-                }
-            })
+        portfolio.currencies = portfolio.currencies.map((saved_currency: PortfolioCurrency) => {
 
-            setCurrencies(new_currencies);
-            setPortfolio(portfolio);
-        }
+            const currency = currencies.find((curr: Currency) => curr.id === saved_currency.id);
+            const current_investments = saved_currency.amount * +currency.priceUsd;
+            const difference_usd = current_investments - +saved_currency.initial_investments;
+            const is_profit = difference_usd >= 0;
+
+            return {
+                id: saved_currency.id,
+                rank: saved_currency.rank,
+                amount: saved_currency.amount,
+                initial_investments: saved_currency.initial_investments,
+                name: currency.name,
+                priceUsd: currency.priceUsd,
+                current_investments: (current_investments).toFixed(3),
+                is_profit: is_profit,
+                difference_usd: (is_profit ? "+" : "") + difference_usd.toFixed(3),
+                difference_percent: (is_profit ? "+" : "") + (difference_usd / +saved_currency.initial_investments || 0).toFixed(3)
+            }
+        });
+
+        setPortfolio(portfolio);
+        updatePortfolioInfo();
     }
 
-    const updateCurrencyRates = () => {
-
-        currencies.map(async (currency: PortfolioCurrency, index) => {
-            const result = await CoincapService.getCurrencyRate(currency.id);
-            currency.current_investments = result.data * currency.amount;
-            if (index) portfolio.current_investments += currency.current_investments;
-            else portfolio.current_investments = currency.current_investments;
-            setPortfolio(portfolio);
-        })
-        setCurrencies(currencies);
-    }
-
-    const getDifferences = () => {
-        const differenceUsd: string = (portfolio.current_investments - portfolio.initial_investments).toFixed(3);
-        const profit: boolean = !differenceUsd.startsWith("-");
-        const differencePercent: string = ((+differenceUsd / portfolio.initial_investments) || 0).toFixed(2);
-
-        return {
-            differenceUsd,
-            differencePercent,
-            profit
-        }
-    }
 
     return {
         portfolio,
-        currencies,
-        addCurrency,
-        removeCurrency,
-        updateCurrencyRates,
-        getDifferences
+        addPortfolioCurrency,
+        removePortfolioCurrency,
+        updatePortfolioCurrencies
     }
 };
