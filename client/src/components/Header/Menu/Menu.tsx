@@ -1,17 +1,22 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './Menu.scss';
-import {useHeaderCurrencies} from "hooks";
-import {HeaderCurrency} from "services";
+import {Currency, HeaderCurrency} from "services";
+import {useAllCurrencies} from "hooks";
 
 
 export function Menu() {
 
-    const {header_currencies, is_header_currencies_loading} = useHeaderCurrencies();
+    const [header_currencies, setHeaderCurrencies] = useState<Currency[]>([]);
+    const {crypto_currencies, is_crypto_currencies_loading} = useAllCurrencies();
+
+    useEffect(() => {
+        if (!is_crypto_currencies_loading && crypto_currencies) setHeaderCurrencies(crypto_currencies.slice(0, 3));
+    }, [crypto_currencies])
 
     return (
         <div id="menu">
             <ul className="menu-list">
-                {!is_header_currencies_loading && header_currencies ?
+                {!is_crypto_currencies_loading && header_currencies ?
                     <>
                         {header_currencies.map((currency: HeaderCurrency) => (
                             <li className={`menu-item`} key={currency.id}>
