@@ -9,7 +9,8 @@ export function CryptoTable() {
 
     const {page} = useSearchParams();
     const [currency, setCurrency] = useState<Currency | null>(null);
-    const {crypto_currencies, is_crypto_currencies_loading, refresh_currencies} = useAllCurrencies();
+    const {crypto_currencies, is_crypto_currencies_loading} = useAllCurrencies();
+    const [page_currencies, setPageCurrencies] = useState<Currency[]>([]);
 
     const handleControllerClick = (event: MouseEvent, currency?: Currency | null) => {
         if (currency) setCurrency(currency);
@@ -18,8 +19,10 @@ export function CryptoTable() {
     }
 
     useEffect(() => {
-        refresh_currencies();
-    }, [page])
+        if (page && crypto_currencies && !is_crypto_currencies_loading) {
+            setPageCurrencies(crypto_currencies.slice((+page!-1) * 15, Math.min((+page!-1) * 15 + 15, crypto_currencies.length)));
+        }
+    }, [crypto_currencies, page])
 
 
     return (
@@ -42,7 +45,7 @@ export function CryptoTable() {
                     </tr>
                     </thead>
                     <tbody>
-                    {crypto_currencies.map((currency: Currency) => (
+                    {page_currencies.map((currency: Currency) => (
                         <CryptoTableItem currency={currency} handleClick={handleControllerClick} key={currency.id}/>
                     ))}
                     </tbody>

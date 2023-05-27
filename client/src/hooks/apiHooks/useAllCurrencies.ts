@@ -1,11 +1,9 @@
 import {useQuery} from "react-query";
 import {CoincapService, Currency, ResultType} from "services";
-import {useSearchParams} from "hooks";
 
 
 export const useAllCurrencies = () => {
 
-    const {page} = useSearchParams();
 
     const {data, isLoading, isError, error, refetch} = useQuery<Currency[] | undefined, Error>(["all_currencies"],
 
@@ -13,8 +11,7 @@ export const useAllCurrencies = () => {
             const result: ResultType = await CoincapService.getAllCurrencies();
 
             if (result.type === "success") {
-                const curr_page = parseInt(page || "1") - 1;
-                return result.data.slice(curr_page * 15, Math.min(curr_page * 15 + 15, result.data.length));
+                return result.data;
             }
             else {
                 throw new Error(JSON.stringify(result.data));
