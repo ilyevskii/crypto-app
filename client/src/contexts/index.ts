@@ -1,2 +1,2 @@
 export {usePortfolio, PortfolioContextProvider} from "./Portfolio/PortfolioContext";
-export {type PortfolioCurrency, type Portfolio} from "./Portfolio/PortfolioTypes";
+export {type PortfolioCurrency} from "./Portfolio/PortfolioTypes";

@@ -1,15 +1,19 @@
 import {createContext, useReducer, useContext} from "react";
 import React, {Context} from "react";
 import {PortfolioReducer} from "./PortfolioReducer";
-import {Portfolio, PortfolioContextInterface, AuthContextProviderProps, PortfolioCurrency} from "./PortfolioTypes";
+import {Portfolio, PortfolioContextInterface, PortfolioContextProviderProps, PortfolioCurrency} from "./PortfolioTypes";
 
 
 const INITIAL_STATE : PortfolioContextInterface = {
     portfolio: localStorage.getItem("portfolio") ? JSON.parse(localStorage.getItem("portfolio")!) :
-                    {current_investments: 0, initial_investments: 0} as Portfolio,
-    currencies: localStorage.getItem("currencies") ? JSON.parse(localStorage.getItem("currencies")!) : [] as PortfolioCurrency[],
+        {
+            balance: "0",
+            is_profit: true,
+            difference_percent: "0",
+            difference_usd: "0",
+            currencies: [] as PortfolioCurrency[]
+        } as Portfolio,
     setPortfolio: () => {},
-    setCurrencies: () => {},
     dispatch: () => {},
 };
 
@@ -24,27 +28,20 @@ export function usePortfolio() {
 }
 
 
-export const PortfolioContextProvider = ({children}: AuthContextProviderProps) => {
+export const PortfolioContextProvider = ({children}: PortfolioContextProviderProps) => {
     const [state, dispatch] = useReducer(PortfolioReducer, INITIAL_STATE);
 
+    console.log(state.portfolio)
     const setPortfolio = (payload: Portfolio) => {
         dispatch({ type: "SET_PORTFOLIO", portfolio_payload: payload });
         localStorage.setItem("portfolio", JSON.stringify(payload));
     }
 
-    const setCurrencies = (payload: PortfolioCurrency[]) => {
-        dispatch({type: "SET_CURRENCIES", currencies_payload: payload});
-        localStorage.setItem("currencies", JSON.stringify(payload));
-    }
-
-
     return (
         <PortfolioContext.Provider
             value={{
                 portfolio: state.portfolio,
-                currencies: state.currencies,
                 setPortfolio: setPortfolio,
-                setCurrencies: setCurrencies,
                 dispatch
             }}
         >

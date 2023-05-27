@@ -1,36 +1,41 @@
 import {Dispatch, ReactNode} from "react";
 
 export interface Portfolio {
-    initial_investments: number;
-    current_investments: number;
+    balance: string;
+    is_profit: boolean;
+    difference_usd: string;
+    difference_percent: string;
+    currencies: PortfolioCurrency[];
 }
 
 export interface PortfolioCurrency {
     id: string;
+    rank: string;
     amount: number;
-    initial_investments: number;
-    current_investments: number;
+    initial_investments: string;
+    name: string;
+    priceUsd: string;
+    current_investments: string;
+    is_profit: boolean;
+    difference_percent: string;
+    difference_usd: string;
 }
 
-export interface AuthContextProviderProps {
+export interface PortfolioContextProviderProps {
     children: ReactNode;
 }
 
 export interface PortfolioContextInterface {
     portfolio: Portfolio;
-    currencies: PortfolioCurrency[];
-    setPortfolio: (payload: any) => void;
-    setCurrencies: (payload: any) => void;
+    setPortfolio: (payload: Portfolio) => void;
     dispatch: Dispatch<Action>;
 }
 
 export interface PortfolioState{
     portfolio: Portfolio;
-    currencies: PortfolioCurrency[];
 }
 
 export interface Action {
     type: string;
-    portfolio_payload?: Portfolio;
-    currencies_payload?: PortfolioCurrency[];
+    portfolio_payload: Portfolio;
 }

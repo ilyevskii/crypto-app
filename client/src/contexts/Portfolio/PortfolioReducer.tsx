@@ -9,11 +9,6 @@ export const PortfolioReducer = (state: PortfolioState, action: Action): Portfol
                 ...state,
                 portfolio: action.portfolio_payload!
             }
-        case "SET_CURRENCIES":
-            return {
-                ...state,
-                currencies: action.currencies_payload!
-            }
         default:
             return state;
     }
