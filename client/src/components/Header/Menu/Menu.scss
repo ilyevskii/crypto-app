@@ -2,10 +2,31 @@
 
 .menu-list {
   @include flex-row(3.75em);
+
+  @media screen and (max-width: 1023px) {
+    gap: 2.5em;
+  }
+
+  @media screen and (max-width: 742px) {
+    flex-direction: column;
+    gap: 0.5em;
+  }
 }
 
 .menu-item {
   color: $black;
   list-style-type: none;
   text-align: center;
+
+  @media screen and (max-width: 742px) {
+    @include flex-row();
+    gap: 0.5em;
+    justify-content: space-between;
+  }
+
+  @media screen and (max-width: 591px) {
+    @include flex-row();
+    gap: 0.5em;
+    justify-content: center;
+  }
 }
