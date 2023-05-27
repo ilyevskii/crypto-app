@@ -5,18 +5,24 @@ import {useNavigate} from "react-router-dom";
 import {Menu} from "./Menu/Menu";
 import {ModalWindow} from "../ModalWindow/ModalWindow";
 import {PortfolioWindow} from "../PortfolioWindow/PortfolioWindow";
-import {usePortfolioFunctions} from "hooks";
+import {useAllCurrencies, usePortfolioFunctions} from "hooks";
 
 
 export function Header() {
 
     const [portfolioOpened, setPortfolioOpened] = useState<boolean>(false);
+    const {crypto_currencies, is_crypto_currencies_loading} = useAllCurrencies();
+    const {portfolio, updatePortfolioCurrencies} = usePortfolioFunctions();
     const navigate = useNavigate();
-    const {portfolio, getDifferences} = usePortfolioFunctions();
 
     const handlePortfolioClick = () => {
         setPortfolioOpened(state => !state);
     }
+
+    useEffect(() => {
+        if (!is_crypto_currencies_loading && crypto_currencies) updatePortfolioCurrencies(crypto_currencies);
+    }, [crypto_currencies])
+
 
     return (
         <>
@@ -28,9 +34,9 @@ export function Header() {
                 </div>
                 <Menu/>
                 <button className="portfolio-info-btn" onClick={handlePortfolioClick}>
-                    <p>Balance: <span className="semi-bold">{portfolio.current_investments.toFixed(3)}$</span></p>
-                    <p className={`color-${getDifferences().profit ? 'success' : 'failure'}`}>
-                        {getDifferences().differenceUsd}&#36; ({getDifferences().differencePercent}%)
+                    <p>Balance: <span className="semi-bold">{portfolio.balance}</span></p>
+                    <p className={`color-${portfolio.is_profit ? 'success' : 'failure'}`}>
+                        {portfolio.difference_usd}&#36; ({portfolio.difference_percent}%)
                     </p>
                 </button>
             </header>
