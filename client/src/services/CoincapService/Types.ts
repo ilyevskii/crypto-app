@@ -5,7 +5,7 @@ export interface ResultType {
 
 export interface Currency {
     id: string;
-    rank?: string;
+    rank: string;
     symbol: string;
     name: string;
     supply: string;

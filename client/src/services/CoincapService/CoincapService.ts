@@ -44,25 +44,6 @@ export class CoincapService {
         }
     }
 
-
-    public static async getCurrencyRate(id: string): Promise<ResultType> {
-
-        try {
-            const response = await axios.get(`${this.url}/rates/${id}`, {headers: {"Content-Type": "application/json"}});
-            return {
-                type: "success",
-                data: response.data.data.rateUsd
-            }
-        }
-        catch (err: any) {
-            return {
-                type: "error",
-                data: ""
-            }
-        }
-    }
-
-
     public static async getCurrencyInfo(id: string): Promise<ResultType> {
 
         try {

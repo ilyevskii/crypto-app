@@ -1,6 +1,7 @@
 import {Currency, HeaderCurrency, HistoryItem} from "./Types";
 
 
+
 export class UtilitiesService {
 
     public static transformCurrency(currency: any, is_single: boolean = false, timestamp?: number): Currency {
