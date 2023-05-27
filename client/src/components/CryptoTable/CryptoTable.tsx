@@ -3,6 +3,7 @@ import React, {MouseEvent, useEffect, useState} from 'react';
 import {CryptoTableItem, ModalWindow, AddCurrencyWindow} from 'components';
 import {Currency} from 'services';
 import {useAllCurrencies, useSearchParams} from 'hooks';
+import {Loader} from "@mantine/core";
 
 
 export function CryptoTable() {
@@ -52,7 +53,9 @@ export function CryptoTable() {
                     </tbody>
                 </table>
                 :
-                <div>Loading...</div>
+                <div className="loader-wrapper">
+                    <Loader size="80px" color="yellow"/>
+                </div>
             }
         </>
     );

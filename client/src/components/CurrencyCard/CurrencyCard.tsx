@@ -4,6 +4,7 @@ import './CurrencyCard.scss';
 import {ModalWindow, ChangesSchedule, AddCurrencyWindow} from 'components';
 import {useCurrencyInfo} from "hooks";
 import {useParams} from "react-router-dom";
+import {Loader} from "@mantine/core";
 
 
 export function CurrencyCard() {
@@ -58,8 +59,8 @@ export function CurrencyCard() {
                         onClick={handleBuyClick}>Buy Currency</button>
                 </div>
                 :
-                <div>
-                    Loading...
+                <div className="loader-wrapper">
+                   <Loader size="80px" color="yellow"/>
                 </div>
             }
 

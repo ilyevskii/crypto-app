@@ -28,7 +28,7 @@ export function Menu() {
                         ))}
                     </>
                     :
-                    <div>Loading...</div>
+                    <></>
                 }
             </ul>
         </div>
