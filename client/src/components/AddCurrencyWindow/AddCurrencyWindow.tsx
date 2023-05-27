@@ -12,12 +12,12 @@ interface CurrencyWindowProps {
 export function AddCurrencyWindow(props: CurrencyWindowProps) {
 
     const {currency} = props;
-    const {addCurrency} = usePortfolioFunctions();
+    const {addPortfolioCurrency} = usePortfolioFunctions();
     const [value, setValue] = useState<string>("");
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        addCurrency(currency.id, currency.name, currency.priceUsd, Number(value));
+        addPortfolioCurrency(currency, Number(value));
         (document.querySelector(".modal-close-btn") as HTMLButtonElement).click();
     }
 
