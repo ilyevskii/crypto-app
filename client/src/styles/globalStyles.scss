@@ -32,6 +32,10 @@ table {
         padding: 0.4em 2em;
       }
 
+      th:first-of-type {
+        color: $yellow-main-500;
+      }
+
       &:hover {
         background-color: $white;
         cursor: initial;
@@ -49,6 +53,10 @@ table {
       padding: 0.3em 0;
     }
 
+    td:first-of-type {
+      color: $yellow-main-500;
+    }
+
     &:hover {
       background-color: $grey-100;
       cursor: pointer;
@@ -56,7 +64,7 @@ table {
   }
 }
 
-.add-currency-control {
+.toggle-currency-control-btn {
   color: $grey-600;
   font-size: 1.8em;
   transition: 0.25s ease;
@@ -67,7 +75,7 @@ table {
 }
 
 .container {
-  @include flex-row(1.875em);
+  @include flex-column(2em);
   justify-content: space-between;
   padding: 1.875em 0;
   margin: 0 11.25%;
@@ -75,6 +83,21 @@ table {
   &.narrow {
     padding: 1.875em 0;
     margin: 0 23%;
+  }
+}
+
+.input-error {
+  border-color: $failure-red;
+}
+
+.loader-wrapper {
+  @include flex-row();
+  height: 72.9vh;
+  align-items: center;
+  justify-content: center;
+
+  .loader {
+    color: $yellow-main-500;
   }
 }
 
@@ -92,5 +115,14 @@ table {
 
   &:hover {
     transform: translateY(-3px);
+  }
+
+  &:disabled {
+    background-color: $yellow-300;
+
+    &:hover {
+      cursor: initial;
+      transform: translateY(0);
+    }
   }
 }
