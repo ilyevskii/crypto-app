@@ -21,7 +21,7 @@ export function CryptoTable() {
 
     useEffect(() => {
         if (crypto_currencies && !is_crypto_currencies_loading) {
-            if (!page) setPageSearchParam(1);
+            if (!page || isNaN(+page)) setPageSearchParam(1);
             setPageCurrencies(crypto_currencies.slice((+page!-1) * 15, Math.min((+page!-1) * 15 + 15, crypto_currencies.length)));
         }
     }, [crypto_currencies, page])
