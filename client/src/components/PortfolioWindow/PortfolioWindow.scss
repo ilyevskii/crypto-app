@@ -12,6 +12,7 @@
 
   &-info {
     display: grid;
+    grid-template-columns: auto auto;
 
     p {
       span:first-of-type {

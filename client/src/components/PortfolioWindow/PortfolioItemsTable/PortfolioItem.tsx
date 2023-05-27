@@ -12,19 +12,20 @@ export function PortfolioItem(props: PortfolioItemProps) {
 
 
     const {currency} = props;
-    const {removeCurrency} = usePortfolioFunctions();
+    const {removePortfolioCurrency} = usePortfolioFunctions();
 
 
     return (
         <tr className="portfolio-item">
             <td>{currency.name}</td>
             <td>{currency.amount}</td>
-            <td>{+(currency.initial_investments).toFixed(2)} &#36;</td>
-            <td>{+(currency.current_investments).toFixed(2)} &#36;</td>
-            <td>{+(currency.current_investments - currency.initial_investments).toFixed(2)} &#36;</td>
-            <td>{+((currency.current_investments - currency.initial_investments)/currency.initial_investments).toFixed(3)} %</td>
+            <td>{currency.priceUsd}</td>
+            <td>{currency.initial_investments} &#36;</td>
+            <td>{currency.current_investments} &#36;</td>
+            <td>{currency.difference_usd} &#36;</td>
+            <td>{currency.difference_percent} %</td>
             <td>
-                <button className="toggle-currency-control-btn" onClick={() => removeCurrency(currency.id)}>
+                <button className="toggle-currency-control-btn" onClick={() => removePortfolioCurrency(currency.id)}>
                     -
                 </button>
             </td>

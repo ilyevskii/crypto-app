@@ -8,7 +8,7 @@ import {PortfolioItem} from "./PortfolioItem";
 
 export function PortfolioItemsTable() {
 
-    const {currencies} = usePortfolioFunctions();
+    const {portfolio} = usePortfolioFunctions();
     const navigate = useNavigate();
 
     const handleBuyClick = () => {
@@ -18,12 +18,13 @@ export function PortfolioItemsTable() {
 
     return (
         <>
-            {currencies.length ?
+            {portfolio.currencies.length ?
                 <table className="portfolio-items-table">
                     <thead className="table-header">
                     <tr>
                         <th>Name</th>
                         <th>Amount</th>
+                        <th>Rate</th>
                         <th>Invested</th>
                         <th>Current</th>
                         <th>Profit</th>
@@ -32,7 +33,7 @@ export function PortfolioItemsTable() {
                     </tr>
                     </thead>
                     <tbody>
-                    {currencies.map((currency: PortfolioCurrency) => (
+                    {portfolio.currencies.map((currency: PortfolioCurrency) => (
                         <PortfolioItem currency={currency} key={currency.id}/>
                     ))}
                     </tbody>
