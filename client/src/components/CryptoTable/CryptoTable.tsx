@@ -7,7 +7,7 @@ import {useAllCurrencies, useSearchParams} from 'hooks';
 
 export function CryptoTable() {
 
-    const {page} = useSearchParams();
+    const {page, setPageSearchParam} = useSearchParams();
     const [currency, setCurrency] = useState<Currency | null>(null);
     const {crypto_currencies, is_crypto_currencies_loading} = useAllCurrencies();
     const [page_currencies, setPageCurrencies] = useState<Currency[]>([]);
@@ -19,7 +19,8 @@ export function CryptoTable() {
     }
 
     useEffect(() => {
-        if (page && crypto_currencies && !is_crypto_currencies_loading) {
+        if (crypto_currencies && !is_crypto_currencies_loading) {
+            if (!page) setPageSearchParam(1);
             setPageCurrencies(crypto_currencies.slice((+page!-1) * 15, Math.min((+page!-1) * 15 + 15, crypto_currencies.length)));
         }
     }, [crypto_currencies, page])
