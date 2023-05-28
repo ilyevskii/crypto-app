@@ -83,7 +83,7 @@ table {
 
   &.narrow {
     padding: 1.875em 0;
-    margin: 0 23%;
+    margin: 0 17%;
   }
 }
 
@@ -133,6 +133,11 @@ table {
   .container {
     padding: 1.875em 0;
     margin: 0 5%;
+
+    &.narrow {
+      padding: 1.5em 0;
+      margin: 0 11.25%;
+    }
   }
 
   th {
@@ -142,21 +147,11 @@ table {
   td {
     padding: 0.4em 0.55em !important;
   }
-
 }
 
 @media screen and (max-width: 1023px) {
   body {
     font-size: 15.5px;
-  }
-  .container {
-    padding: 1.875em 0;
-    margin: 0 5%;
-
-    &.narrow {
-      padding: 1.5em 0;
-      margin: 0 11.25%;
-    }
   }
 }
 
@@ -169,21 +164,13 @@ table {
 
     &.narrow {
       padding: 1.5em 0;
-      margin: 0 5%;
+      margin: 0 2.5%;
     }
   }
 }
 
-@media screen and (max-width: 591px) {
+@media screen and (max-width: 592px) {
   body {
     font-size: 15px;
-  }
-}
-
-@media screen and (max-width: 441px) {
-  .container {
-    &.narrow {
-      padding: 1em 1.5em;
-    }
   }
 }

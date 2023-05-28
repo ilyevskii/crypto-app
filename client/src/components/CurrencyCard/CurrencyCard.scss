@@ -2,13 +2,13 @@
 
 
 .currency-card {
-  @include flex-column(3.25em);
+  @include flex-column(1.5em);
   @include border($grey-200, 1px, 0.75em);
   background-color: $white;
   color: $black;
   font-family: Inter, sans-serif;
   min-width: fit-content;
-  padding: 1.5625em;
+  padding: 1.25em;
   width: 100%;
 
   .toggle-currency-control-btn {
@@ -44,7 +44,7 @@
   }
 
   &-body {
-    @include flex-column(1.5em);
+    @include flex-column(1em);
 
     &-info {
       display: grid;
@@ -55,7 +55,19 @@
           padding-right: 1em;
         }
       }
+
     }
   }
+}
 
+@media screen and (max-width: 594px) {
+  .currency-card-body-info {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media screen and (max-width: 441px) {
+  .currency-card-body-info {
+    grid-template-columns: auto;
+  }
 }

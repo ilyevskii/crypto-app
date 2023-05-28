@@ -5,6 +5,7 @@ import {ModalWindow, ChangesSchedule, AddCurrencyWindow} from 'components';
 import {useCurrencyInfo} from "hooks";
 import {useParams} from "react-router-dom";
 import {Loader} from "@mantine/core";
+import {useMediaQuery} from "react-responsive";
 
 
 export function CurrencyCard() {
@@ -12,6 +13,8 @@ export function CurrencyCard() {
     const {id} = useParams();
     const [modalOpened, setModalOpened] = useState<boolean>(false);
     const {currency, is_currency_loading} = useCurrencyInfo(id || "1");
+
+    const mw442px = useMediaQuery({maxWidth: "442px"});
 
     const handleBuyClick = () => {
         setModalOpened(state => !state);
@@ -33,10 +36,12 @@ export function CurrencyCard() {
                             <span>{currency.info.date}</span>
                             <span>{currency.info.time}</span>
                         </p>
+                        {!mw442px &&
                         <button
                             className="toggle-currency-control-btn"
                             type="button"
                             onClick={handleBuyClick}>+</button>
+                        }
                     </div>
                     <div className="currency-card-body">
                         <div className="currency-card-body-info semi-bold">
@@ -46,10 +51,10 @@ export function CurrencyCard() {
                                 {currency.info.changePercent24Hr}&#37;
                             </span>
                             </p>
-                            <p><span className="color-grey">MARKET CAP</span><span>&#36;{currency.info.marketCapUsd}</span></p>
-                            <p><span className="color-grey">HIGH</span><span>&#36;{currency.info.vwap24Hr}</span></p>
-                            <p><span className="color-grey">VOLUME</span><span>&#36;{currency.info.volumeUsd24Hr}</span></p>
                             <p><span className="color-grey">SUPPLY</span><span>&#36;{currency.info.supply}</span></p>
+                            <p><span className="color-grey">HIGH 24H</span><span>&#36;{currency.info.vwap24Hr}</span></p>
+                            <p><span className="color-grey">VOLUME</span><span>&#36;{currency.info.volumeUsd24Hr}</span></p>
+                            <p><span className="color-grey">MARKET CAP</span><span>&#36;{currency.info.marketCapUsd}</span></p>
                         </div>
                         <ChangesSchedule changes={currency.changes} profit={currency.info.profit}/>
                     </div>

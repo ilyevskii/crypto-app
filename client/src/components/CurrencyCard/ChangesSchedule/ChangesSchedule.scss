@@ -1,3 +1,9 @@
-.changes-schedule:hover {
-  cursor: pointer;
+.changes-schedule {
+
+  width: 100% !important;
+  height: 100% !important;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
