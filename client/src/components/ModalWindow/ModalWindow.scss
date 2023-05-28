@@ -35,5 +35,18 @@
         background-color: $grey-100;
       }
     }
+
+    @media screen and (max-width: 429px) {
+      font-size: 0.85em;
+      padding: 0.625em 0.625em;
+    }
+  }
+
+  @media screen and (max-width: 1023px) {
+    padding: 0 5%;
+  }
+
+  @media screen and (max-width: 742px) {
+    padding: 0 2.5%;
   }
 }
