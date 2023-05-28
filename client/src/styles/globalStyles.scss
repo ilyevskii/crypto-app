@@ -65,13 +65,22 @@ table {
   }
 }
 
-.toggle-currency-control-btn {
-  color: $grey-600;
-  font-size: 1.8em;
-  transition: 0.25s ease;
 
-  &:hover {
-    color: $yellow-main-500;
+.bold {
+  font-weight: 700;
+}
+
+.color {
+  &-success {
+    color: $success-green;
+  }
+
+  &-failure {
+    color: $failure-red;
+  }
+
+  &-grey {
+    color: $grey-500;
   }
 }
 
@@ -102,6 +111,10 @@ table {
   }
 }
 
+.semi-bold {
+  font-weight: 600;
+}
+
 .styled-btn {
   background-color: $yellow-main-500;
   border-radius: 1.25em;
@@ -128,8 +141,18 @@ table {
   }
 }
 
-@media screen and (max-width: 1341px) {
+.toggle-currency-control-btn {
+  color: $grey-600;
+  font-size: 1.8em;
+  transition: 0.25s ease;
 
+  &:hover {
+    color: $yellow-main-500;
+  }
+}
+
+
+@media screen and (max-width: 1341px) {
   .container {
     padding: 1.875em 0;
     margin: 0 5%;
