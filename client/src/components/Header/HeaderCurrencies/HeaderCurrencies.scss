@@ -1,6 +1,6 @@
 @import "../Header";
 
-.menu-list {
+.header-currencies {
   @include flex-row(3.75em);
 
   @media screen and (max-width: 1023px) {
@@ -13,7 +13,7 @@
   }
 }
 
-.menu-item {
+.header-currencies-item {
   color: $black;
   list-style-type: none;
   text-align: center;

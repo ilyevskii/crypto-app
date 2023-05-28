@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './Header.scss';
 
 import {useNavigate} from "react-router-dom";
-import {Menu} from "./Menu/Menu";
+import {HeaderCurrencies} from "./HeaderCurrencies/HeaderCurrencies";
 import {ModalWindow} from "../ModalWindow/ModalWindow";
 import {PortfolioWindow} from "../PortfolioWindow/PortfolioWindow";
 import {useAllCurrencies, usePortfolioFunctions} from "hooks";
@@ -32,7 +32,7 @@ export function Header() {
                     <h1 className="logo-text semi-bold"><span>Coin</span>Cap</h1>
                     <p className="logo-author">by @ilyevskii.</p>
                 </div>
-                <Menu/>
+                <HeaderCurrencies/>
                 <button className="portfolio-info-btn" onClick={handlePortfolioClick}>
                     <p>Balance: <span className="semi-bold">{portfolio.balance}</span></p>
                     <p className={`color-${portfolio.is_profit ? 'success' : 'failure'}`}>
