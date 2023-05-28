@@ -14,9 +14,9 @@ export function CryptoTable() {
     const {crypto_currencies, is_crypto_currencies_loading} = useAllCurrencies();
     const [page_currencies, setPageCurrencies] = useState<Currency[]>([]);
 
-    const isTinyScreen = useMediaQuery({maxWidth: "441px"});
-    const isSmallScreen = useMediaQuery({maxWidth: "591px"});
-    const isMediumScreen = useMediaQuery({maxWidth: "741px"});
+    const mw442px = useMediaQuery({maxWidth: "442px"});
+    const mw593px = useMediaQuery({maxWidth: "53px"});
+    const mw741px = useMediaQuery({maxWidth: "741px"});
 
     const handleControllerClick = (event: MouseEvent, currency?: Currency | null) => {
         if (currency) setCurrency(currency);
@@ -40,13 +40,13 @@ export function CryptoTable() {
                 <table className="crypto-table">
                     <thead className="table-header">
                     <tr>
-                        {!isMediumScreen && <th>#</th>}
+                        {!mw741px && <th>#</th>}
                         <th>Name</th>
-                        {!isMediumScreen && <th>Symbol</th>}
+                        {!mw741px && <th>Symbol</th>}
                         <th>Price (USD)</th>
-                        {!isMediumScreen && <th>Supply</th>}
-                        {!isSmallScreen && <th>VWAP (24Hr)	</th>}
-                        {!isTinyScreen && <th>Vol (24Hr)</th>}
+                        {!mw593px && <th>Supply</th>}
+                        {!mw741px && <th>VWAP (24Hr)	</th>}
+                        {!mw442px && <th>Vol (24Hr)</th>}
                         <th>Chg (24Hr)</th>
                         <th>Buy</th>
                     </tr>

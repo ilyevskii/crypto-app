@@ -16,9 +16,9 @@ export function CryptoTableItem(props: TableItemProps) {
     const {currency, handleClick} = props;
     const navigate = useNavigate();
 
-    const isTinyScreen = useMediaQuery({maxWidth: "441px"});
-    const isSmallScreen = useMediaQuery({maxWidth: "591px"});
-    const isMediumScreen = useMediaQuery({maxWidth: "741px"});
+    const mw442px = useMediaQuery({maxWidth: "442px"});
+    const mw593px = useMediaQuery({maxWidth: "53px"});
+    const mw741px = useMediaQuery({maxWidth: "741px"});
 
 
     const handleTableItemClick = () => {
@@ -29,13 +29,13 @@ export function CryptoTableItem(props: TableItemProps) {
     return (
         <>
             <tr className="crypto-table-item" onClick={handleTableItemClick}>
-                {!isMediumScreen && <td>{currency.rank}</td>}
+                {!mw741px && <td>{currency.rank}</td>}
                 <td>{currency.name}</td>
-                {!isMediumScreen && <td>{currency.rank}</td>}
+                {!mw741px && <td>{currency.rank}</td>}
                 <td>{currency.priceUsd}</td>
-                {!isSmallScreen && <td>{currency.supply}</td>}
-                {!isMediumScreen && <td>{currency.vwap24Hr}</td>}
-                {!isTinyScreen && <td>{currency.volumeUsd24Hr}</td>}
+                {!mw593px && <td>{currency.supply}</td>}
+                {!mw741px && <td>{currency.vwap24Hr}</td>}
+                {!mw442px && <td>{currency.volumeUsd24Hr}</td>}
                 <td className={`color-${currency.profit ? "success" : "failure"}`}>
                     {currency.changePercent24Hr}%
                 </td>
