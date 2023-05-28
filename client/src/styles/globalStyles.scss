@@ -51,6 +51,7 @@ table {
     td {
       @include border($grey-300);
       padding: 0.3em 0;
+      width: fit-content;
     }
 
     td:first-of-type {
@@ -123,6 +124,66 @@ table {
     &:hover {
       cursor: initial;
       transform: translateY(0);
+    }
+  }
+}
+
+@media screen and (max-width: 1341px) {
+
+  .container {
+    padding: 1.875em 0;
+    margin: 0 5%;
+  }
+
+  th {
+    padding: 0.4em 0.55em !important;
+  }
+
+  td {
+    padding: 0.4em 0.55em !important;
+  }
+
+}
+
+@media screen and (max-width: 1023px) {
+  body {
+    font-size: 15.5px;
+  }
+  .container {
+    padding: 1.875em 0;
+    margin: 0 5%;
+
+    &.narrow {
+      padding: 1.5em 0;
+      margin: 0 11.25%;
+    }
+  }
+}
+
+@media screen and (max-width: 742px) {
+  .container {
+    flex-direction: column;
+    gap: 0.5em;
+    padding: 1.5em 0;
+    margin: 0 2.5%;
+
+    &.narrow {
+      padding: 1.5em 0;
+      margin: 0 5%;
+    }
+  }
+}
+
+@media screen and (max-width: 591px) {
+  body {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 441px) {
+  .container {
+    &.narrow {
+      padding: 1em 1.5em;
     }
   }
 }
