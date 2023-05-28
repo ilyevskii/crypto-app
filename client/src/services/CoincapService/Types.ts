@@ -19,14 +19,6 @@ export interface Currency {
     marketCapUsd?: string;
 }
 
-export interface HeaderCurrency {
-    id: string;
-    name: string;
-    priceUsd: string;
-    profit: boolean;
-    changePercent24Hr: string;
-}
-
 export interface HistoryItem {
     priceUsd: string;
     time: string;

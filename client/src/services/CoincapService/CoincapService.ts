@@ -1,7 +1,6 @@
 import axios from "axios";
 import {UtilitiesService} from "./UtilitiesService";
 import {ResultType} from "./Types";
-import {PortfolioCurrency} from "contexts";
 
 
 export class CoincapService {
@@ -21,7 +20,11 @@ export class CoincapService {
         catch (err: any) {
             return {
                 type: "error",
-                data: ""
+                data: {
+                    status_code: err.response?.status,
+                    error: err.response?.data.error,
+                    message: err.response?.data.message
+                }
             }
         }
     }
@@ -45,7 +48,11 @@ export class CoincapService {
         catch (err: any) {
             return {
                 type: "error",
-                data: ""
+                data: {
+                    status_code: err.response?.status,
+                    error: err.response?.data.error,
+                    message: err.response?.data.message
+                }
             }
         }
     }
