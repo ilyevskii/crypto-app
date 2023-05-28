@@ -1,0 +1,23 @@
+@import "../../styles/utilities";
+
+
+.portfolio-window {
+  @include flex-column(1em);
+  font-family: Inter, sans-serif;
+
+  &-header {
+    width: 20em;
+    font-size: 1.15em;
+  }
+
+  &-info {
+    display: grid;
+    grid-template-columns: auto auto;
+
+    p {
+      span:first-of-type {
+        padding-right: 1em;
+      }
+    }
+  }
+}

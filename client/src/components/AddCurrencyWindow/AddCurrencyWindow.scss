@@ -1,0 +1,14 @@
+@import "../../styles/utilities";
+
+.add-currency-window {
+  @include flex-column(1em);
+  font-family: Inter, sans-serif;
+
+  &-header {
+    font-size: 1.15em;
+  }
+
+  &-form {
+    @include flex-column(1em);
+  }
+}

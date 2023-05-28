@@ -1,0 +1,203 @@
+@import "constants";
+@import "utilities";
+
+
+body {
+  background-color: $background-color;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+input {
+  @include border($grey-300, 1px, 0.5em);
+  padding: 0.75em 1em;
+}
+
+input:focus {
+  border-color: $yellow-200;
+}
+
+table {
+  background-color: $white;
+  width: 100%;
+  border-collapse: collapse;
+
+  .table-header {
+    tr {
+      th {
+        @include border($grey-300);
+        font-size: 1.1em;
+        padding: 0.4em 2em;
+      }
+
+      th:first-of-type {
+        color: $yellow-main-500;
+      }
+
+      &:hover {
+        background-color: $white;
+        cursor: initial;
+      }
+    }
+  }
+
+  tr {
+    border-bottom: 1px solid $grey-200;
+    text-align: center;
+    transition: 0.25s ease;
+
+    td {
+      @include border($grey-300);
+      padding: 0.3em 0;
+      width: fit-content;
+    }
+
+    td:first-of-type {
+      color: $yellow-main-500;
+    }
+
+    &:hover {
+      background-color: $grey-100;
+      cursor: pointer;
+    }
+  }
+}
+
+
+.bold {
+  font-weight: 700;
+}
+
+.color {
+  &-success {
+    color: $success-green;
+  }
+
+  &-failure {
+    color: $failure-red;
+  }
+
+  &-grey {
+    color: $grey-500;
+  }
+}
+
+.container {
+  @include flex-column(2em);
+  justify-content: space-between;
+  padding: 1.875em 0;
+  margin: 0 11.25%;
+
+  &.narrow {
+    padding: 1.875em 0;
+    margin: 0 17%;
+  }
+}
+
+.input-error {
+  border-color: $failure-red;
+}
+
+.loader-wrapper {
+  @include flex-row();
+  height: 72.9vh;
+  align-items: center;
+  justify-content: center;
+
+  .loader {
+    color: $yellow-main-500;
+  }
+}
+
+.semi-bold {
+  font-weight: 600;
+}
+
+.styled-btn {
+  background-color: $yellow-main-500;
+  border-radius: 1.25em;
+  box-shadow: $grey-400 0 1px;
+  color: $black-300;
+  font-size: 0.9em;
+  font-weight: 600;
+  margin: auto;
+  padding: 0.65em 1.5em;
+  transition: 0.2s ease;
+  width: fit-content;
+
+  &:hover {
+    transform: translateY(-3px);
+  }
+
+  &:disabled {
+    background-color: $yellow-300;
+
+    &:hover {
+      cursor: initial;
+      transform: translateY(0);
+    }
+  }
+}
+
+.toggle-currency-control-btn {
+  color: $grey-600;
+  font-size: 1.8em;
+  transition: 0.25s ease;
+
+  &:hover {
+    color: $yellow-main-500;
+  }
+}
+
+
+@media screen and (max-width: 1341px) {
+  .container {
+    padding: 1.875em 0;
+    margin: 0 5%;
+
+    &.narrow {
+      padding: 1.5em 0;
+      margin: 0 11.25%;
+    }
+  }
+
+  th {
+    padding: 0.4em 0.55em !important;
+  }
+
+  td {
+    padding: 0.4em 0.55em !important;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  body {
+    font-size: 15.5px;
+  }
+}
+
+@media screen and (max-width: 742px) {
+  .container {
+    flex-direction: column;
+    gap: 0.5em;
+    padding: 1.5em 0;
+    margin: 0 2.5%;
+
+    &.narrow {
+      padding: 1.5em 0;
+      margin: 0 2.5%;
+    }
+
+    &.error {
+      gap: 1.5em;
+    }
+  }
+}
+
+@media screen and (max-width: 592px) {
+  body {
+    font-size: 15px;
+  }
+}

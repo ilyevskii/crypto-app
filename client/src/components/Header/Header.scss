@@ -1,0 +1,65 @@
+@import "../../styles/utilities";
+
+.site-header {
+  @include flex-row();
+  align-items: center;
+  background-color: $white;
+  justify-content: space-between;
+  padding: 0.625em 11.25%;
+  width: 100%;
+
+  .logo {
+    @include flex-column();
+    color: $black;
+    justify-content: flex-start;
+
+    &-author {
+      color: #939394;
+      font-size: 0.75em;
+      font-weight: 300;
+      margin-top: -0.5em;
+      padding-left: 0.15em;
+    }
+
+    &-text {
+      font-size: 1.75em;
+
+      span {
+        color: $yellow-main-500;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .portfolio-info-btn {
+    border-radius: 1.5em;
+    padding: 0.4em 0.75em;
+    transition: 0.25s ease;
+    width: 15%;
+
+    &:hover {
+      background-color: $grey-200;
+    }
+
+    @media screen and (max-width: 742px) {
+      width: 25%;
+      padding: 0.3em 0.6em;
+    }
+
+    @media screen and (max-width: 591px) {
+      width: 30%;
+      padding: 0.3em 0.6em;
+    }
+  }
+
+  @media screen and (max-width: 1341px) {
+    padding: 0.625em 5%;
+  }
+
+  @media screen and (max-width: 742px) {
+    padding: 0.625em 2.5%;
+  }
+}

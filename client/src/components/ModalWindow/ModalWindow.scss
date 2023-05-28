@@ -1,0 +1,52 @@
+@import "../../styles/utilities";
+
+.modal {
+  @include flex-row();
+  align-items: center;
+  background-color: rgba(190, 190, 190, 0.5);
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
+  &-content {
+    @include border($grey-200, 1px, 0.75em);
+    background-color: $white;
+    color: $black-300;
+    margin: auto;
+    padding: 1.25em 1.5em;
+    position: relative;
+    width: fit-content;
+
+    .modal-close-btn {
+      border-radius: 50%;
+      font-size: 2em;
+      padding: 0.2em;
+      position: absolute;
+      line-height: 50%;
+      right: 0.55em;
+      top: 0.425em;
+      transition: 0.25s ease;
+
+      &:hover {
+        background-color: $grey-100;
+      }
+    }
+
+    @media screen and (max-width: 429px) {
+      font-size: 0.85em;
+      padding: 0.625em 0.625em;
+    }
+  }
+
+  @media screen and (max-width: 1023px) {
+    padding: 0 5%;
+  }
+
+  @media screen and (max-width: 742px) {
+    padding: 0 2.5%;
+  }
+}
