@@ -5,13 +5,14 @@ import {Currency} from 'services';
 import {useAllCurrencies, useSearchParams} from 'hooks';
 import {Loader} from "@mantine/core";
 import {useMediaQuery} from "react-responsive";
+import {Navigate} from "react-router-dom";
 
 
 export function CryptoTable() {
 
     const {page, setPageSearchParam} = useSearchParams();
     const [currency, setCurrency] = useState<Currency | null>(null);
-    const {crypto_currencies, is_crypto_currencies_loading} = useAllCurrencies();
+    const {crypto_currencies, is_crypto_currencies_loading, is_crypto_currencies_error} = useAllCurrencies();
     const [page_currencies, setPageCurrencies] = useState<Currency[]>([]);
 
     const mw442px = useMediaQuery({maxWidth: "442px"});
@@ -35,6 +36,7 @@ export function CryptoTable() {
     return (
         <>
             {currency && <ModalWindow child={<AddCurrencyWindow currency={currency}/>} onClose={handleControllerClick}/>}
+            {is_crypto_currencies_error && <Navigate to={"404"}/>}
 
             {!is_crypto_currencies_loading && crypto_currencies ?
                 <table className="crypto-table">

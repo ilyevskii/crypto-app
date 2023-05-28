@@ -1,18 +1,20 @@
 import React, {useState} from 'react';
 import './CurrencyCard.scss';
 
-import {ModalWindow, ChangesSchedule, AddCurrencyWindow} from 'components';
-import {useCurrencyInfo} from "hooks";
 import {useParams} from "react-router-dom";
 import {Loader} from "@mantine/core";
 import {useMediaQuery} from "react-responsive";
+import {Navigate} from "react-router-dom";
+
+import {ModalWindow, ChangesSchedule, AddCurrencyWindow} from "components";
+import {useCurrencyInfo} from "hooks";
 
 
 export function CurrencyCard() {
 
     const {id} = useParams();
     const [modalOpened, setModalOpened] = useState<boolean>(false);
-    const {currency, is_currency_loading} = useCurrencyInfo(id || "1");
+    const {currency, is_currency_loading, is_currency_error} = useCurrencyInfo(id || "1");
 
     const mw442px = useMediaQuery({maxWidth: "442px"});
 
@@ -24,6 +26,7 @@ export function CurrencyCard() {
     return (
         <main className="container narrow">
             {modalOpened && <ModalWindow child={<AddCurrencyWindow currency={currency.info}/>} onClose={handleBuyClick}/>}
+            {is_currency_error && <Navigate to={"404"}/>}
 
             {!is_currency_loading && currency?
                 <div className="currency-card">
