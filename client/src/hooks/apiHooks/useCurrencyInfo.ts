@@ -2,7 +2,7 @@ import {useQuery} from "react-query";
 import {CoincapService, Currency, ResultType, HistoryItem} from "services";
 import {ModifiedHistory} from "../../services/CoincapService/Types";
 
-interface CurrencyInfoType {
+export interface CurrencyInfoType {
     info: Currency,
     changes: ModifiedHistory
 }

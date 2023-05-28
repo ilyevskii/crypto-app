@@ -17,9 +17,7 @@ const client = new QueryClient();
 root.render(
     <QueryClientProvider client={client}>
         <PortfolioContextProvider>
-            <React.StrictMode>
-                <App />
-            </React.StrictMode>
+            <App />
         </PortfolioContextProvider>
     </QueryClientProvider>
 );
