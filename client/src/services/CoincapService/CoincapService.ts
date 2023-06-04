@@ -1,6 +1,7 @@
 import axios from "axios";
 import {UtilitiesService} from "./UtilitiesService";
 import {IResultType} from "./Types";
+import {IPortfolioCurrency} from "contexts";
 
 
 export class CoincapService {
@@ -8,10 +9,33 @@ export class CoincapService {
     private static readonly url: string = "https://api.coincap.io/v2";
 
 
-    public static async getAllCurrencies(page: string): Promise<IResultType> {
+    public static async getPageCurrencies(page: string): Promise<IResultType> {
 
         try {
             const response = await axios.get(`${this.url}/assets?offset=${(+page - 1) * 15}&limit=15`,
+                {headers: {"Content-Type": "application/json"}});
+            return {
+                type: "success",
+                data: response.data.data.map((currency: any) => {
+                    return UtilitiesService.transformCurrency(currency)
+                })
+            }
+        } catch (err: any) {
+            return {
+                type: "error",
+                data: {
+                    status_code: err.response?.status,
+                    error: err.response?.data.error,
+                    message: err.response?.data.message
+                }
+            }
+        }
+    }
+
+    public static async getPortfolioCurrencies(old_currencies: Array<IPortfolioCurrency>): Promise<IResultType> {
+
+        try {
+            const response = await axios.get(`${this.url}/assets?ids=${old_currencies.map(curr => curr.id).join(",")}`,
                 {headers: {"Content-Type": "application/json"}});
             return {
                 type: "success",

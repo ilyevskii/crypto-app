@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './PortfolioWindow.scss';
 import {PortfolioItemsTable} from "./PortfolioItemsTable/PortfolioItemsTable";
-import {usePortfolioFunctions} from "hooks";
+import {usePageCurrencies, usePortfolioCurrencies, usePortfolioFunctions} from "hooks";
 
 
 export const PortfolioWindow = () => {

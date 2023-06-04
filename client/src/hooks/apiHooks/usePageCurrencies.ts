@@ -9,7 +9,7 @@ export const usePageCurrencies = () => {
     const {data, isLoading, isError, error, refetch} = useQuery<Array<ICurrency> | undefined, Error>(["page_currencies", page],
 
         async () => {
-            const result: IResultType = await CoincapService.getAllCurrencies(page!);
+            const result: IResultType = await CoincapService.getPageCurrencies(page!);
 
             if (result.type === "success") {
                 return result.data;

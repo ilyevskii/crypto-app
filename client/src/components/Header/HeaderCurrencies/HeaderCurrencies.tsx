@@ -14,9 +14,14 @@ export const HeaderCurrencies = () => {
     const client = useQueryClient();
 
     useEffect(() => {
-        const header_currs = client.getQueryData(['page_currencies', '1']);
-        if (header_currs) {
-            setHeaderCurrencies((header_currs as Array<ICurrency>).slice(0, 3));
+        if (crypto_currencies) {
+            const header_currs = client.getQueryData(['page_currencies', '1']);
+            if (header_currs) {
+                setHeaderCurrencies((header_currs as Array<ICurrency>).slice(0, 3));
+            }
+            else {
+                setHeaderCurrencies(crypto_currencies.slice(0, 3));
+            }
         }
     }, [crypto_currencies])
 
