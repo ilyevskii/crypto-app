@@ -4,7 +4,7 @@ import {PortfolioReducer} from "./PortfolioReducer";
 import {Portfolio, PortfolioContextInterface, PortfolioContextProviderProps, PortfolioCurrency} from "./PortfolioTypes";
 
 
-const INITIAL_STATE : PortfolioContextInterface = {
+const INITIAL_STATE: PortfolioContextInterface = {
     portfolio: localStorage.getItem("portfolio") ? JSON.parse(localStorage.getItem("portfolio")!) :
         {
             balance: "0",
@@ -13,8 +13,10 @@ const INITIAL_STATE : PortfolioContextInterface = {
             difference_usd: "0",
             currencies: [] as PortfolioCurrency[]
         } as Portfolio,
-    setPortfolio: () => {},
-    dispatch: () => {},
+    setPortfolio: () => {
+    },
+    dispatch: () => {
+    },
 };
 
 export const PortfolioContext: Context<PortfolioContextInterface> = createContext<PortfolioContextInterface>(INITIAL_STATE);
@@ -33,7 +35,7 @@ export const PortfolioContextProvider = ({children}: PortfolioContextProviderPro
 
     console.log(state.portfolio)
     const setPortfolio = (payload: Portfolio) => {
-        dispatch({ type: "SET_PORTFOLIO", portfolio_payload: payload });
+        dispatch({type: "SET_PORTFOLIO", portfolio_payload: payload});
         localStorage.setItem("portfolio", JSON.stringify(payload));
     }
 

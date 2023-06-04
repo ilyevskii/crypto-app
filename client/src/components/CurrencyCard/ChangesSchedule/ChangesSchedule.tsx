@@ -40,7 +40,7 @@ export function ChangesSchedule(props: Props) {
 
     const {hours, prices, min, max} = props.changes;
 
-    const options={
+    const options = {
         responsive: true,
         scales: {
             y: {

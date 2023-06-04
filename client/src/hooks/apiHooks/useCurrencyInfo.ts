@@ -16,8 +16,7 @@ export const useCurrencyInfo = (id: string) => {
 
             if (result.type === "success") {
                 return result.data;
-            }
-            else {
+            } else {
                 throw new Error(JSON.stringify(result.data));
             }
         },

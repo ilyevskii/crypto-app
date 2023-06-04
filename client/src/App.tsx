@@ -10,17 +10,17 @@ import {CurrencyPage} from "./pages/CurrencyPage";
 
 function App() {
 
-  return (
-      <Router basename="/">
-          <Header/>
-          <Routes>
-              <Route path="/" element={<MainPage/>}/>
-              <Route path="/currency/:id" element={<CurrencyPage/>}/>
-              <Route path="404" element={<ErrorPage/>}/>
-              <Route path="*" element={<Navigate to={"404"}/>}/>
-          </Routes>
-      </Router>
-  );
+    return (
+        <Router basename="/">
+            <Header/>
+            <Routes>
+                <Route path="/" element={<MainPage/>}/>
+                <Route path="/currency/:id" element={<CurrencyPage/>}/>
+                <Route path="404" element={<ErrorPage/>}/>
+                <Route path="*" element={<Navigate to={"404"}/>}/>
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;

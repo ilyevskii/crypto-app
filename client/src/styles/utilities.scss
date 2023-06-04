@@ -5,8 +5,7 @@
 
   @if $border-color != none {
     border: $border-size solid $border-color;
-  }
-  @else {
+  } @else {
     border: none;
   }
 

@@ -42,8 +42,11 @@ export function CryptoTableItem(props: TableItemProps) {
                 <td>
                     <button
                         className="toggle-currency-control-btn bold"
-                        onClick={(event: MouseEvent) => {handleClick(event, currency)}}
-                    >+</button>
+                        onClick={(event: MouseEvent) => {
+                            handleClick(event, currency)
+                        }}
+                    >+
+                    </button>
                 </td>
             </tr>
         </>

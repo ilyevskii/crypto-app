@@ -7,7 +7,7 @@ import {ModalWindow, ChangesSchedule, AddCurrencyWindow} from "components";
 import {CurrencyInfoType} from "hooks";
 
 
-export function CurrencyCard({currency}: {currency: CurrencyInfoType}) {
+export function CurrencyCard({currency}: { currency: CurrencyInfoType }) {
 
     const [modalOpened, setModalOpened] = useState<boolean>(false);
     const mw442px = useMediaQuery({maxWidth: "442px"});
@@ -19,7 +19,8 @@ export function CurrencyCard({currency}: {currency: CurrencyInfoType}) {
 
     return (
         <>
-            {modalOpened && <ModalWindow child={<AddCurrencyWindow currency={currency.info}/>} onClose={handleBuyClick}/>}
+            {modalOpened &&
+                <ModalWindow child={<AddCurrencyWindow currency={currency.info}/>} onClose={handleBuyClick}/>}
 
             <div className="currency-card">
                 <div className="currency-card-header">
@@ -32,10 +33,10 @@ export function CurrencyCard({currency}: {currency: CurrencyInfoType}) {
                         <span>{currency.info.time}</span>
                     </p>
                     {!mw442px &&
-                    <button
-                        className="toggle-currency-control-btn"
-                        type="button"
-                        onClick={handleBuyClick}>+</button>
+                        <button
+                            className="toggle-currency-control-btn"
+                            type="button"
+                            onClick={handleBuyClick}>+</button>
                     }
                 </div>
                 <div className="currency-card-body">
@@ -49,14 +50,16 @@ export function CurrencyCard({currency}: {currency: CurrencyInfoType}) {
                         <p><span className="color-grey">SUPPLY</span><span>&#36;{currency.info.supply}</span></p>
                         <p><span className="color-grey">HIGH 24H</span><span>&#36;{currency.info.vwap24Hr}</span></p>
                         <p><span className="color-grey">VOLUME</span><span>&#36;{currency.info.volumeUsd24Hr}</span></p>
-                        <p><span className="color-grey">MARKET CAP</span><span>&#36;{currency.info.marketCapUsd}</span></p>
+                        <p><span className="color-grey">MARKET CAP</span><span>&#36;{currency.info.marketCapUsd}</span>
+                        </p>
                     </div>
                     <ChangesSchedule changes={currency.changes} profit={currency.info.profit}/>
                 </div>
                 <button
                     className="styled-btn"
                     type="button"
-                    onClick={handleBuyClick}>Buy Currency</button>
+                    onClick={handleBuyClick}>Buy Currency
+                </button>
             </div>
         </>
     );

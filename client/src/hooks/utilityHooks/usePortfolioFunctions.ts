@@ -16,8 +16,7 @@ export const usePortfolioFunctions = () => {
                     saved_currency.current_investments = (+saved_currency.current_investments! + amount * +currency.priceUsd).toFixed(3);
                 }
             })
-        }
-        else {
+        } else {
             portfolio.currencies.push({
                 id: currency.id,
                 name: currency.name,
@@ -55,12 +54,12 @@ export const usePortfolioFunctions = () => {
         for (let currency of portfolio.currencies) {
             portfolio.balance = (+portfolio.balance + +currency.current_investments!).toFixed(3);
             portfolio.difference_usd = (currency.is_profit ? "+" : "") +
-                                       (+portfolio.difference_usd + +currency.difference_usd!).toFixed(3);
+                (+portfolio.difference_usd + +currency.difference_usd!).toFixed(3);
         }
 
         portfolio.is_profit = +portfolio.difference_usd >= 0;
         portfolio.difference_percent = (portfolio.is_profit ? "+" : "") +
-                                       (+portfolio.difference_usd / +portfolio.balance || 0).toFixed(3);
+            (+portfolio.difference_usd / +portfolio.balance || 0).toFixed(3);
 
         setPortfolio(portfolio);
     }

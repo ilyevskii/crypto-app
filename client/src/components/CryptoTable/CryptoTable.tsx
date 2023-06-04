@@ -5,7 +5,7 @@ import {Currency} from 'services';
 import {useMediaQuery} from "react-responsive";
 
 
-export function CryptoTable({page_currencies}: {page_currencies: Currency[]}) {
+export function CryptoTable({page_currencies}: { page_currencies: Currency[] }) {
 
     const [currency, setCurrency] = useState<Currency | null>(null);
 
@@ -22,7 +22,8 @@ export function CryptoTable({page_currencies}: {page_currencies: Currency[]}) {
 
     return (
         <>
-            {currency && <ModalWindow child={<AddCurrencyWindow currency={currency}/>} onClose={handleControllerClick}/>}
+            {currency &&
+                <ModalWindow child={<AddCurrencyWindow currency={currency}/>} onClose={handleControllerClick}/>}
 
             <table className="crypto-table">
                 <thead className="table-header">
@@ -32,7 +33,7 @@ export function CryptoTable({page_currencies}: {page_currencies: Currency[]}) {
                     {!mw741px && <th>Symbol</th>}
                     <th>Price (USD)</th>
                     {!mw593px && <th>Supply</th>}
-                    {!mw741px && <th>VWAP (24Hr)	</th>}
+                    {!mw741px && <th>VWAP (24Hr) </th>}
                     {!mw442px && <th>Vol (24Hr)</th>}
                     <th>Chg (24Hr)</th>
                     <th>Buy</th>

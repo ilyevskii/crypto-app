@@ -14,10 +14,11 @@ export class CoincapService {
             const response = await axios.get(`${this.url}/assets?limit=750`, {headers: {"Content-Type": "application/json"}});
             return {
                 type: "success",
-                data: response.data.data.map((currency: any) => {return UtilitiesService.transformCurrency(currency)})
+                data: response.data.data.map((currency: any) => {
+                    return UtilitiesService.transformCurrency(currency)
+                })
             }
-        }
-        catch (err: any) {
+        } catch (err: any) {
             return {
                 type: "error",
                 data: {
@@ -44,8 +45,7 @@ export class CoincapService {
                     changes: UtilitiesService.transformHistory(changes_response.data.data)
                 }
             }
-        }
-        catch (err: any) {
+        } catch (err: any) {
             return {
                 type: "error",
                 data: {

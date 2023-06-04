@@ -1,7 +1,6 @@
 import {Currency, HistoryItem} from "./Types";
 
 
-
 export class UtilitiesService {
 
     public static transformCurrency(currency: any, is_single: boolean = false, timestamp?: number): Currency {
@@ -22,7 +21,12 @@ export class UtilitiesService {
         if (is_single) {
             const date = new Date(timestamp!);
             transformed.date = date.toLocaleDateString("en-GB", {day: "numeric", month: "long", year: "numeric"});
-            transformed.time = date.toLocaleTimeString("en-US", {hour12: false, hourCycle: "h23", hour: "2-digit", minute: "2-digit"});
+            transformed.time = date.toLocaleTimeString("en-US", {
+                hour12: false,
+                hourCycle: "h23",
+                hour: "2-digit",
+                minute: "2-digit"
+            });
             transformed.marketCapUsd = UtilitiesService.sliceNum(currency.marketCapUsd);
         }
 

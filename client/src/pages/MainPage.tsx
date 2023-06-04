@@ -16,7 +16,7 @@ export function MainPage() {
     useEffect(() => {
         if (crypto_currencies) {
             if (!page || isNaN(+page)) setPageSearchParam(1);
-            setPageCurrencies(crypto_currencies.slice((+page!-1) * 15, Math.min((+page!-1) * 15 + 15, crypto_currencies.length)));
+            setPageCurrencies(crypto_currencies.slice((+page! - 1) * 15, Math.min((+page! - 1) * 15 + 15, crypto_currencies.length)));
         }
     }, [crypto_currencies, page])
 
