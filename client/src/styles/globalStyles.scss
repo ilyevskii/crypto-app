@@ -6,25 +6,98 @@ body {
   background-color: $background-color;
 }
 
-button:hover {
-  cursor: pointer;
+
+.button {
+
+  &--styled {
+    background-color: $yellow-main-500;
+    border-radius: 1.25em;
+    box-shadow: $grey-400 0 1px;
+    color: $black-300;
+    font-size: 0.9em;
+    font-weight: 600;
+    margin: auto;
+    padding: 0.65em 1.5em;
+    transition: 0.2s ease;
+    width: fit-content;
+
+    &:hover {
+      transform: translateY(-3px);
+    }
+
+    &:disabled {
+      background-color: $yellow-300;
+
+      &:hover {
+        cursor: initial;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &--toggle {
+    color: $grey-600;
+    font-size: 1.8em;
+    transition: 0.25s ease;
+
+    &:hover {
+      color: $yellow-main-500;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
-input {
+.color {
+  &-success {
+    color: $success-green;
+  }
+
+  &-failure {
+    color: $failure-red;
+  }
+
+  &-grey {
+    color: $grey-500;
+  }
+}
+
+.container {
+  @include flex-column(2em);
+  justify-content: space-between;
+  padding: 1.875em 0;
+  margin: 0 11.25%;
+
+  &.narrow {
+    padding: 1.875em 0;
+    margin: 0 17%;
+  }
+}
+
+.input {
   @include border($grey-300, 1px, 0.5em);
   padding: 0.75em 1em;
+
+  &:focus {
+    border-color: $yellow-200;
+  }
 }
 
-input:focus {
-  border-color: $yellow-200;
+.loader-wrapper {
+  @include flex-row();
+  height: 72.9vh;
+  align-items: center;
+  justify-content: center;
 }
 
-table {
+.table {
   background-color: $white;
   width: 100%;
   border-collapse: collapse;
 
-  .table-header {
+  &__header {
     tr {
       th {
         @include border($grey-300);
@@ -65,91 +138,14 @@ table {
   }
 }
 
-
-.bold {
+.weight_bold {
   font-weight: 700;
 }
 
-.color {
-  &-success {
-    color: $success-green;
-  }
-
-  &-failure {
-    color: $failure-red;
-  }
-
-  &-grey {
-    color: $grey-500;
-  }
-}
-
-.container {
-  @include flex-column(2em);
-  justify-content: space-between;
-  padding: 1.875em 0;
-  margin: 0 11.25%;
-
-  &.narrow {
-    padding: 1.875em 0;
-    margin: 0 17%;
-  }
-}
-
-.input-error {
-  border-color: $failure-red;
-}
-
-.loader-wrapper {
-  @include flex-row();
-  height: 72.9vh;
-  align-items: center;
-  justify-content: center;
-
-  .loader {
-    color: $yellow-main-500;
-  }
-}
-
-.semi-bold {
+.weight_semi-bold {
   font-weight: 600;
 }
 
-.styled-btn {
-  background-color: $yellow-main-500;
-  border-radius: 1.25em;
-  box-shadow: $grey-400 0 1px;
-  color: $black-300;
-  font-size: 0.9em;
-  font-weight: 600;
-  margin: auto;
-  padding: 0.65em 1.5em;
-  transition: 0.2s ease;
-  width: fit-content;
-
-  &:hover {
-    transform: translateY(-3px);
-  }
-
-  &:disabled {
-    background-color: $yellow-300;
-
-    &:hover {
-      cursor: initial;
-      transform: translateY(0);
-    }
-  }
-}
-
-.toggle-currency-control-btn {
-  color: $grey-600;
-  font-size: 1.8em;
-  transition: 0.25s ease;
-
-  &:hover {
-    color: $yellow-main-500;
-  }
-}
 
 
 @media screen and (max-width: 1341px) {

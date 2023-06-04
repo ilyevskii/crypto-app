@@ -14,9 +14,9 @@ export const ModalWindow = (props: IModalWindowProps) => {
 
     return (
         <div className="modal">
-            <div className="modal-content">
+            <div className="modal__content">
                 <button
-                    className="modal-close-btn"
+                    className="modal__content-close-button button"
                     type="button"
                     onClick={onClose}>&times;</button>
                 {React.cloneElement(child, {onClose: onClose})}

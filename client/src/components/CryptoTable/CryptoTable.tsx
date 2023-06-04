@@ -25,8 +25,8 @@ export const CryptoTable = ({page_currencies}: { page_currencies: Array<ICurrenc
             {currency &&
                 <ModalWindow child={<AddCurrencyWindow currency={currency}/>} onClose={handleControllerClick}/>}
 
-            <table className="crypto-table">
-                <thead className="table-header">
+            <table className="table">
+                <thead className="table__header">
                 <tr>
                     {!mw741px && <th>#</th>}
                     <th>Name</th>

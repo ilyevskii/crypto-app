@@ -22,7 +22,7 @@ export const PortfolioItem = (props: IPortfolioItemProps) => {
 
 
     return (
-        <tr className="portfolio-item">
+        <tr>
             <td>{currency.name}</td>
             <td>{currency.amount}</td>
             {!mw741px && <td>{currency.priceUsd}</td>}
@@ -31,7 +31,7 @@ export const PortfolioItem = (props: IPortfolioItemProps) => {
             {!mw441px && <td>{currency.difference_usd} &#36;</td>}
             {!mw591px && <td>{currency.difference_percent} %</td>}
             <td>
-                <button className="toggle-currency-control-btn" onClick={() => removePortfolioCurrency(currency.id)}>
+                <button className="button button--toggle" onClick={() => removePortfolioCurrency(currency.id)}>
                     -
                 </button>
             </td>

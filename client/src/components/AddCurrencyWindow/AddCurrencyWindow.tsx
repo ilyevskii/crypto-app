@@ -32,14 +32,15 @@ export const AddCurrencyWindow = (props: ICurrencyWindowProps) => {
 
     return (
         <div className="add-currency-window">
-            <h4 className="add-currency-window-header">Buy {currency.symbol}</h4>
-            <form onSubmit={handleSubmit} className="add-currency-window-form">
+            <h4 className="add-currency-window__header">Buy {currency.symbol}</h4>
+            <form onSubmit={handleSubmit} className="add-currency-window__form">
                 <input
+                    className="input"
                     placeholder="Enter amount"
                     value={value}
                     onChange={handleChange}
                 />
-                <button className="styled-btn" type="submit" disabled={!value}>
+                <button className="button button--styled" type="submit" disabled={!value}>
                     Buy
                 </button>
             </form>

@@ -27,14 +27,14 @@ export const Header = () => {
     return (
         <>
             {portfolioOpened && <ModalWindow child={<PortfolioWindow/>} onClose={handlePortfolioClick}/>}
-            <header className="site-header">
-                <div className="logo" onClick={() => navigate("/?page=1")}>
-                    <h1 className="logo-text semi-bold"><span>Coin</span>Cap</h1>
-                    <p className="logo-author">by @ilyevskii.</p>
+            <header className="header">
+                <div className="header__logo" onClick={() => navigate("/?page=1")}>
+                    <h1 className="header__logo-text weight_semi-bold"><span>Coin</span>Cap</h1>
+                    <p className="header__logo-author">by @ilyevskii.</p>
                 </div>
                 <HeaderCurrencies/>
-                <button className="portfolio-info-btn" onClick={handlePortfolioClick}>
-                    <p>Balance: <span className="semi-bold">{portfolio.balance}</span></p>
+                <button className="header__portfolio-button button" onClick={handlePortfolioClick}>
+                    <p>Balance: <span className="weight_semi-bold">{portfolio.balance}&#36;</span></p>
                     <p className={`color-${portfolio.is_profit ? 'success' : 'failure'}`}>
                         {portfolio.difference_usd}&#36; ({portfolio.difference_percent}%)
                     </p>

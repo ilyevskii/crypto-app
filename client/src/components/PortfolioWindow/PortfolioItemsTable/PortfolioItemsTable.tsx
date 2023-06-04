@@ -26,8 +26,8 @@ export const PortfolioItemsTable = () => {
     return (
         <>
             {portfolio.currencies.length ?
-                <table className="portfolio-items-table">
-                    <thead className="table-header">
+                <table className="table">
+                    <thead className="table__header">
                     <tr>
                         <th>Name</th>
                         <th>{mw441 ? "Sum" : "Amount"}</th>
@@ -46,7 +46,7 @@ export const PortfolioItemsTable = () => {
                     </tbody>
                 </table>
                 :
-                <button className="styled-btn" onClick={handleBuyClick}>Buy Tokens</button>
+                <button className="button button--styled" onClick={handleBuyClick}>Buy Tokens</button>
             }
         </>
 

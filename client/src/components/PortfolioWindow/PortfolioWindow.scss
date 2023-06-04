@@ -5,12 +5,12 @@
   @include flex-column(1em);
   font-family: Inter, sans-serif;
 
-  &-header {
+  &__header {
     width: 20em;
     font-size: 1.15em;
   }
 
-  &-info {
+  &__body {
     display: grid;
     grid-template-columns: auto auto;
 

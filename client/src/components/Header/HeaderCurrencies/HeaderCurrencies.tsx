@@ -18,12 +18,12 @@ export const HeaderCurrencies = () => {
 
 
     return (
-        <ul className="header-currencies">
+        <ul className="header__currencies">
             {!is_crypto_currencies_loading && header_currencies &&
                 <>
                     {header_currencies.map((currency: ICurrency) => (
-                        <li className={`header-currencies-item`} key={currency.id}>
-                            <p>{currency.name}: <span className="semi-bold">{currency.priceUsd}$</span></p>
+                        <li className={`header__currencies-item`} key={currency.id}>
+                            <p>{currency.name}: <span className="weight_semi-bold">{currency.priceUsd}$</span></p>
                             {!isSmallScreen &&
                                 <p className={`color-${currency.profit ? 'success' : 'failure'}`}>
                                     {currency.changePercent24Hr}%

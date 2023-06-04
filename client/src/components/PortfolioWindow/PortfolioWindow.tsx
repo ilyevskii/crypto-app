@@ -11,8 +11,8 @@ export const PortfolioWindow = () => {
 
     return (
         <div className="portfolio-window">
-            <h3 className="portfolio-window-header">My Portfolio</h3>
-            <div className="portfolio-window-info semi-bold">
+            <h3 className="portfolio-window__header">My Portfolio</h3>
+            <div className="portfolio-window__body weight_semi-bold">
                 <p><span className="color-grey">BALANCE</span><span>&#36;{portfolio.balance}</span></p>
                 {+portfolio.balance !== 0 &&
                     <p>

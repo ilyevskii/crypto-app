@@ -28,7 +28,7 @@ export const CryptoTableItem = (props: ITableItemProps) => {
 
     return (
         <>
-            <tr className="crypto-table-item" onClick={handleTableItemClick}>
+            <tr onClick={handleTableItemClick}>
                 {!mw741px && <td>{currency.rank}</td>}
                 <td>{currency.name}</td>
                 {!mw741px && <td>{currency.rank}</td>}
@@ -41,7 +41,7 @@ export const CryptoTableItem = (props: ITableItemProps) => {
                 </td>
                 <td>
                     <button
-                        className="toggle-currency-control-btn bold"
+                        className="button button--toggle weight_bold"
                         onClick={(event: MouseEvent) => {
                             handleClick(event, currency)
                         }}

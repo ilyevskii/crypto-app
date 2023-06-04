@@ -12,7 +12,7 @@
   width: 100%;
   z-index: 1;
 
-  &-content {
+  &__content {
     @include border($grey-200, 1px, 0.75em);
     background-color: $white;
     color: $black-300;
@@ -21,7 +21,7 @@
     position: relative;
     width: fit-content;
 
-    .modal-close-btn {
+    &-close-button {
       border-radius: 50%;
       font-size: 2em;
       padding: 0.2em;
