@@ -9,7 +9,7 @@ interface IPortfolioItemProps {
 }
 
 
-export function PortfolioItem(props: IPortfolioItemProps) {
+export const PortfolioItem = (props: IPortfolioItemProps) => {
 
 
     const {currency} = props;

@@ -8,7 +8,7 @@ interface IModalWindowProps {
 }
 
 
-export function ModalWindow(props: IModalWindowProps) {
+export const ModalWindow = (props: IModalWindowProps) => {
 
     const {child, onClose} = props;
 

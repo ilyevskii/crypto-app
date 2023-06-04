@@ -9,7 +9,7 @@ interface ICurrencyWindowProps {
 }
 
 
-export function AddCurrencyWindow(props: ICurrencyWindowProps) {
+export const AddCurrencyWindow = (props: ICurrencyWindowProps) => {
 
     const {currency} = props;
     const {addPortfolioCurrency} = usePortfolioFunctions();

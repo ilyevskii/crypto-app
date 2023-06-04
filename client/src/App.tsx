@@ -8,7 +8,7 @@ import {MainPage} from "./pages/MainPage";
 import {ErrorPage} from "./pages/ErrorPage";
 import {CurrencyPage} from "./pages/CurrencyPage";
 
-function App() {
+const App = () => {
 
     return (
         <Router basename="/">

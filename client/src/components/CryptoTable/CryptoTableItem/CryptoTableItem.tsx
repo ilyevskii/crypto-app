@@ -10,7 +10,7 @@ interface ITableItemProps {
 }
 
 
-export function CryptoTableItem(props: ITableItemProps) {
+export const CryptoTableItem = (props: ITableItemProps) => {
 
 
     const {currency, handleClick} = props;

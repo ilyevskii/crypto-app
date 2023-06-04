@@ -7,7 +7,7 @@ import {ModalWindow, ChangesSchedule, AddCurrencyWindow} from "components";
 import {CurrencyInfoType} from "hooks";
 
 
-export function CurrencyCard({currency}: { currency: CurrencyInfoType }) {
+export const CurrencyCard = ({currency}: { currency: CurrencyInfoType }) => {
 
     const [modalOpened, setModalOpened] = useState<boolean>(false);
     const mw442px = useMediaQuery({maxWidth: "442px"});

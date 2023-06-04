@@ -34,7 +34,7 @@ interface IChangesScheduleProps {
 }
 
 
-export function ChangesSchedule(props: IChangesScheduleProps) {
+export const ChangesSchedule = (props: IChangesScheduleProps) => {
 
 
     const {hours, prices, min, max} = props.changes;

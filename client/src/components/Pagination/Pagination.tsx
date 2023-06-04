@@ -10,7 +10,7 @@ interface IPaginationProps {
 }
 
 
-export function Pagination(props: IPaginationProps) {
+export const Pagination = (props: IPaginationProps) => {
 
     const {total} = props;
     const isTinyScreen = useMediaQuery({maxWidth: "441px"});

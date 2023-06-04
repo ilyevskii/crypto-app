@@ -5,7 +5,7 @@ import {ICurrency} from 'services';
 import {useMediaQuery} from "react-responsive";
 
 
-export function CryptoTable({page_currencies}: { page_currencies: ICurrency[] }) {
+export const CryptoTable = ({page_currencies}: { page_currencies: ICurrency[] }) => {
 
     const [currency, setCurrency] = useState<ICurrency | null>(null);
 

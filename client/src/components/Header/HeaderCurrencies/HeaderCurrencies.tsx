@@ -6,7 +6,7 @@ import {useAllCurrencies} from "hooks";
 import {useMediaQuery} from "react-responsive";
 
 
-export function HeaderCurrencies() {
+export const HeaderCurrencies = () => {
 
     const [header_currencies, setHeaderCurrencies] = useState<ICurrency[]>([]);
     const {crypto_currencies, is_crypto_currencies_loading} = useAllCurrencies();

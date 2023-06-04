@@ -21,7 +21,7 @@ const INITIAL_STATE: IPortfolioContext = {
 
 export const PortfolioContext: Context<IPortfolioContext> = createContext<IPortfolioContext>(INITIAL_STATE);
 
-export function usePortfolio() {
+export const usePortfolio = () => {
     const context: IPortfolioContext | undefined = useContext(PortfolioContext);
     if (context === undefined) {
         throw new Error('usePortfolio must be used within an PortfolioProvider');

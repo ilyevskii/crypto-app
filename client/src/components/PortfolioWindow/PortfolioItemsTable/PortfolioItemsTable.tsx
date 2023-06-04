@@ -7,7 +7,7 @@ import {PortfolioItem} from "./PortfolioItem";
 import {useMediaQuery} from "react-responsive";
 
 
-export function PortfolioItemsTable() {
+export const PortfolioItemsTable = () => {
 
     const {portfolio} = usePortfolioFunctions();
     const navigate = useNavigate();

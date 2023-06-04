@@ -8,7 +8,7 @@ import {PortfolioWindow} from "../PortfolioWindow/PortfolioWindow";
 import {useAllCurrencies, usePortfolioFunctions} from "hooks";
 
 
-export function Header() {
+export const Header = () => {
 
     const [portfolioOpened, setPortfolioOpened] = useState<boolean>(false);
     const {crypto_currencies, is_crypto_currencies_loading} = useAllCurrencies();

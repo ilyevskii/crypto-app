@@ -4,7 +4,7 @@ import {useCurrencyInfo} from "hooks";
 import {Loader} from "@mantine/core";
 import {CurrencyCard} from "components";
 
-export function CurrencyPage() {
+export const CurrencyPage = () => {
 
     const {id} = useParams();
     const navigate = useNavigate();

@@ -4,7 +4,7 @@ import {PortfolioItemsTable} from "./PortfolioItemsTable/PortfolioItemsTable";
 import {usePortfolioFunctions} from "hooks";
 
 
-export function PortfolioWindow() {
+export const PortfolioWindow = () => {
 
     const {portfolio} = usePortfolioFunctions();
 

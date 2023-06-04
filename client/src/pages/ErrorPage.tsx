@@ -1,7 +1,8 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
 
-export function ErrorPage() {
+
+export const ErrorPage = () => {
 
     const navigate = useNavigate();
 

@@ -7,7 +7,7 @@ import {Loader} from "@mantine/core";
 import {ICurrency} from "services";
 
 
-export function MainPage() {
+export const MainPage = () => {
 
     const {page, setPageSearchParam} = useSearchParams();
     const {crypto_currencies, is_crypto_currencies_loading, is_crypto_currencies_error} = useAllCurrencies();
