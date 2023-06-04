@@ -1,6 +1,6 @@
 import axios from "axios";
 import {UtilitiesService} from "./UtilitiesService";
-import {ResultType} from "./Types";
+import {IResultType} from "./Types";
 
 
 export class CoincapService {
@@ -8,7 +8,7 @@ export class CoincapService {
     private static readonly url: string = "https://api.coincap.io/v2";
 
 
-    public static async getAllCurrencies(): Promise<ResultType> {
+    public static async getAllCurrencies(): Promise<IResultType> {
 
         try {
             const response = await axios.get(`${this.url}/assets?limit=750`, {headers: {"Content-Type": "application/json"}});
@@ -30,7 +30,7 @@ export class CoincapService {
         }
     }
 
-    public static async getCurrencyInfo(id: string): Promise<ResultType> {
+    public static async getCurrencyInfo(id: string): Promise<IResultType> {
 
         try {
             const info_response = await axios.get(`${this.url}/assets/${id}`, {headers: {"Content-Type": "application/json"}});

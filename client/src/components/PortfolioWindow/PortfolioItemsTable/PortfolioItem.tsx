@@ -1,15 +1,15 @@
 import React from 'react';
 
-import {PortfolioCurrency} from "contexts";
+import {IPortfolioCurrency} from "contexts";
 import {usePortfolioFunctions} from "hooks";
 import {useMediaQuery} from "react-responsive";
 
-interface PortfolioItemProps {
-    currency: PortfolioCurrency;
+interface IPortfolioItemProps {
+    currency: IPortfolioCurrency;
 }
 
 
-export function PortfolioItem(props: PortfolioItemProps) {
+export function PortfolioItem(props: IPortfolioItemProps) {
 
 
     const {currency} = props;

@@ -1,14 +1,14 @@
 import {useQuery} from "react-query";
-import {CoincapService, Currency, ResultType} from "services";
+import {CoincapService, ICurrency, IResultType} from "services";
 
 
 export const useAllCurrencies = () => {
 
 
-    const {data, isLoading, isError, error, refetch} = useQuery<Currency[] | undefined, Error>(["all_currencies"],
+    const {data, isLoading, isError, error, refetch} = useQuery<ICurrency[] | undefined, Error>(["all_currencies"],
 
         async () => {
-            const result: ResultType = await CoincapService.getAllCurrencies();
+            const result: IResultType = await CoincapService.getAllCurrencies();
 
             if (result.type === "success") {
                 return result.data;

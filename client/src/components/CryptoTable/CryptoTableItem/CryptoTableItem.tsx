@@ -1,16 +1,16 @@
 import React, {MouseEvent} from 'react';
 
 import {useNavigate} from 'react-router-dom';
-import {Currency} from 'services';
+import {ICurrency} from 'services';
 import {useMediaQuery} from "react-responsive";
 
-interface TableItemProps {
-    currency: Currency;
-    handleClick: (event: MouseEvent, currency: Currency) => void;
+interface ITableItemProps {
+    currency: ICurrency;
+    handleClick: (event: MouseEvent, currency: ICurrency) => void;
 }
 
 
-export function CryptoTableItem(props: TableItemProps) {
+export function CryptoTableItem(props: ITableItemProps) {
 
 
     const {currency, handleClick} = props;

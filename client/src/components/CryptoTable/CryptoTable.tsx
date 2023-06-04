@@ -1,19 +1,19 @@
 import React, {MouseEvent, useState} from 'react';
 
 import {CryptoTableItem, ModalWindow, AddCurrencyWindow} from 'components';
-import {Currency} from 'services';
+import {ICurrency} from 'services';
 import {useMediaQuery} from "react-responsive";
 
 
-export function CryptoTable({page_currencies}: { page_currencies: Currency[] }) {
+export function CryptoTable({page_currencies}: { page_currencies: ICurrency[] }) {
 
-    const [currency, setCurrency] = useState<Currency | null>(null);
+    const [currency, setCurrency] = useState<ICurrency | null>(null);
 
     const mw442px = useMediaQuery({maxWidth: "442px"});
     const mw593px = useMediaQuery({maxWidth: "53px"});
     const mw741px = useMediaQuery({maxWidth: "741px"});
 
-    const handleControllerClick = (event: MouseEvent, currency?: Currency | null) => {
+    const handleControllerClick = (event: MouseEvent, currency?: ICurrency | null) => {
         if (currency) setCurrency(currency);
         else setCurrency(null);
         event.stopPropagation();
@@ -40,7 +40,7 @@ export function CryptoTable({page_currencies}: { page_currencies: Currency[] }) 
                 </tr>
                 </thead>
                 <tbody>
-                {page_currencies.map((currency: Currency) => (
+                {page_currencies.map((currency: ICurrency) => (
                     <CryptoTableItem currency={currency} handleClick={handleControllerClick} key={currency.id}/>
                 ))}
                 </tbody>

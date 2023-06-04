@@ -2,7 +2,7 @@ import React from 'react';
 import {useNavigate} from "react-router-dom";
 
 import {usePortfolioFunctions} from 'hooks';
-import {PortfolioCurrency} from 'contexts';
+import {IPortfolioCurrency} from 'contexts';
 import {PortfolioItem} from "./PortfolioItem";
 import {useMediaQuery} from "react-responsive";
 
@@ -40,7 +40,7 @@ export function PortfolioItemsTable() {
                     </tr>
                     </thead>
                     <tbody>
-                    {portfolio.currencies.map((currency: PortfolioCurrency) => (
+                    {portfolio.currencies.map((currency: IPortfolioCurrency) => (
                         <PortfolioItem currency={currency} key={currency.id}/>
                     ))}
                     </tbody>

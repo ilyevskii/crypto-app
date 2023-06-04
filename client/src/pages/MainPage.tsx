@@ -4,14 +4,14 @@ import {CryptoTable, Pagination} from "components";
 import {useAllCurrencies, useSearchParams} from "hooks";
 import {Navigate} from "react-router-dom";
 import {Loader} from "@mantine/core";
-import {Currency} from "services";
+import {ICurrency} from "services";
 
 
 export function MainPage() {
 
     const {page, setPageSearchParam} = useSearchParams();
     const {crypto_currencies, is_crypto_currencies_loading, is_crypto_currencies_error} = useAllCurrencies();
-    const [page_currencies, setPageCurrencies] = useState<Currency[]>([]);
+    const [page_currencies, setPageCurrencies] = useState<ICurrency[]>([]);
 
     useEffect(() => {
         if (crypto_currencies) {

@@ -2,14 +2,14 @@ import React, {ChangeEvent, useState} from 'react';
 import './AddCurrencyWindow.scss';
 
 import {usePortfolioFunctions} from 'hooks';
-import {Currency} from 'services';
+import {ICurrency} from 'services';
 
-interface CurrencyWindowProps {
-    currency: Currency;
+interface ICurrencyWindowProps {
+    currency: ICurrency;
 }
 
 
-export function AddCurrencyWindow(props: CurrencyWindowProps) {
+export function AddCurrencyWindow(props: ICurrencyWindowProps) {
 
     const {currency} = props;
     const {addPortfolioCurrency} = usePortfolioFunctions();

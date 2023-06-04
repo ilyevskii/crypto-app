@@ -1,11 +1,11 @@
-import {Currency, HistoryItem} from "./Types";
+import {ICurrency, IHistoryItem} from "./Types";
 
 
 export class UtilitiesService {
 
-    public static transformCurrency(currency: any, is_single: boolean = false, timestamp?: number): Currency {
+    public static transformCurrency(currency: any, is_single: boolean = false, timestamp?: number): ICurrency {
 
-        const transformed: Currency = {
+        const transformed: ICurrency = {
             id: currency.id,
             rank: currency.rank,
             symbol: currency.symbol,
@@ -33,7 +33,7 @@ export class UtilitiesService {
         return transformed;
     }
 
-    public static transformHistory(history: HistoryItem[]): any {
+    public static transformHistory(history: IHistoryItem[]): any {
 
         const prices: number[] = [];
         const hours: string[] = [];

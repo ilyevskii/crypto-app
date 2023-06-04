@@ -1,28 +1,28 @@
 import {createContext, useReducer, useContext} from "react";
 import React, {Context} from "react";
 import {PortfolioReducer} from "./PortfolioReducer";
-import {Portfolio, PortfolioContextInterface, PortfolioContextProviderProps, PortfolioCurrency} from "./PortfolioTypes";
+import {IPortfolio, IPortfolioContext, IPortfolioContextProviderProps, IPortfolioCurrency} from "./PortfolioTypes";
 
 
-const INITIAL_STATE: PortfolioContextInterface = {
+const INITIAL_STATE: IPortfolioContext = {
     portfolio: localStorage.getItem("portfolio") ? JSON.parse(localStorage.getItem("portfolio")!) :
         {
             balance: "0",
             is_profit: true,
             difference_percent: "0",
             difference_usd: "0",
-            currencies: [] as PortfolioCurrency[]
-        } as Portfolio,
+            currencies: [] as IPortfolioCurrency[]
+        } as IPortfolio,
     setPortfolio: () => {
     },
     dispatch: () => {
     },
 };
 
-export const PortfolioContext: Context<PortfolioContextInterface> = createContext<PortfolioContextInterface>(INITIAL_STATE);
+export const PortfolioContext: Context<IPortfolioContext> = createContext<IPortfolioContext>(INITIAL_STATE);
 
 export function usePortfolio() {
-    const context: PortfolioContextInterface | undefined = useContext(PortfolioContext);
+    const context: IPortfolioContext | undefined = useContext(PortfolioContext);
     if (context === undefined) {
         throw new Error('usePortfolio must be used within an PortfolioProvider');
     }
@@ -30,11 +30,11 @@ export function usePortfolio() {
 }
 
 
-export const PortfolioContextProvider = ({children}: PortfolioContextProviderProps) => {
+export const PortfolioContextProvider = ({children}: IPortfolioContextProviderProps) => {
     const [state, dispatch] = useReducer(PortfolioReducer, INITIAL_STATE);
 
     console.log(state.portfolio)
-    const setPortfolio = (payload: Portfolio) => {
+    const setPortfolio = (payload: IPortfolio) => {
         dispatch({type: "SET_PORTFOLIO", portfolio_payload: payload});
         localStorage.setItem("portfolio", JSON.stringify(payload));
     }

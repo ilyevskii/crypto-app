@@ -5,12 +5,12 @@ import {Pagination as PaginationComponent} from '@mantine/core';
 import {useSearchParams} from 'hooks';
 import {useMediaQuery} from "react-responsive";
 
-interface PaginationProps {
+interface IPaginationProps {
     total: number;
 }
 
 
-export function Pagination(props: PaginationProps) {
+export function Pagination(props: IPaginationProps) {
 
     const {total} = props;
     const isTinyScreen = useMediaQuery({maxWidth: "441px"});

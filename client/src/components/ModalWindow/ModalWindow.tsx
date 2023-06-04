@@ -2,13 +2,13 @@ import React, {MouseEvent, ReactElement} from 'react';
 import './ModalWindow.scss';
 
 
-interface ModalWindowProps {
+interface IModalWindowProps {
     child: ReactElement,
     onClose: (event: MouseEvent) => void;
 }
 
 
-export function ModalWindow(props: ModalWindowProps) {
+export function ModalWindow(props: IModalWindowProps) {
 
     const {child, onClose} = props;
 
