@@ -5,13 +5,12 @@ import {useNavigate} from "react-router-dom";
 import {HeaderCurrencies} from "./HeaderCurrencies/HeaderCurrencies";
 import {ModalWindow} from "../ModalWindow/ModalWindow";
 import {PortfolioWindow} from "../PortfolioWindow/PortfolioWindow";
-import {useAllCurrencies, usePortfolioFunctions} from "hooks";
+import {usePageCurrencies, usePortfolioFunctions} from "hooks";
 
 
 export const Header = () => {
 
     const [portfolioOpened, setPortfolioOpened] = useState<boolean>(false);
-    const {crypto_currencies, is_crypto_currencies_loading} = useAllCurrencies();
     const {portfolio, updatePortfolioCurrencies} = usePortfolioFunctions();
     const navigate = useNavigate();
 
@@ -19,9 +18,9 @@ export const Header = () => {
         setPortfolioOpened(state => !state);
     }
 
-    useEffect(() => {
-        if (!is_crypto_currencies_loading && crypto_currencies) updatePortfolioCurrencies(crypto_currencies);
-    }, [crypto_currencies])
+    // useEffect(() => {
+    //     if (!is_crypto_currencies_loading && crypto_currencies) updatePortfolioCurrencies(crypto_currencies);
+    // }, [crypto_currencies])
 
 
     return (

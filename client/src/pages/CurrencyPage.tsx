@@ -1,5 +1,5 @@
 import React from 'react';
-import {Navigate, useNavigate, useParams} from "react-router-dom";
+import {Navigate, useParams} from "react-router-dom";
 import {useCurrencyInfo} from "hooks";
 import {Loader} from "@mantine/core";
 import {CurrencyCard} from "components";
@@ -7,7 +7,6 @@ import {CurrencyCard} from "components";
 export const CurrencyPage = () => {
 
     const {id} = useParams();
-    const navigate = useNavigate();
     const {currency, is_currency_loading, is_currency_error} = useCurrencyInfo(id || "1");
 
     return (

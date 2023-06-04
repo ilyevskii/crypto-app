@@ -8,10 +8,11 @@ export class CoincapService {
     private static readonly url: string = "https://api.coincap.io/v2";
 
 
-    public static async getAllCurrencies(): Promise<IResultType> {
+    public static async getAllCurrencies(page: string): Promise<IResultType> {
 
         try {
-            const response = await axios.get(`${this.url}/assets?limit=750`, {headers: {"Content-Type": "application/json"}});
+            const response = await axios.get(`${this.url}/assets?offset=${(+page - 1) * 15}&limit=15`,
+                {headers: {"Content-Type": "application/json"}});
             return {
                 type: "success",
                 data: response.data.data.map((currency: any) => {
