@@ -2,7 +2,6 @@ import React from 'react';
 
 import {IPortfolioCurrency} from "contexts";
 import {usePortfolioFunctions} from "hooks";
-import {useMediaQuery} from "react-responsive";
 
 interface IPortfolioItemProps {
     currency: IPortfolioCurrency;
@@ -11,26 +10,20 @@ interface IPortfolioItemProps {
 
 export const PortfolioItem = (props: IPortfolioItemProps) => {
 
-
     const {currency} = props;
     const {removePortfolioCurrency} = usePortfolioFunctions();
-
-    const mw441px = useMediaQuery({maxWidth: "441px"});
-    const mw507px = useMediaQuery({maxWidth: "507px"});
-    const mw591px = useMediaQuery({maxWidth: "591px"});
-    const mw741px = useMediaQuery({maxWidth: "741px"});
 
 
     return (
         <tr>
-            <td>{currency.name}</td>
-            <td>{currency.amount}</td>
-            {!mw741px && <td>{currency.priceUsd}</td>}
-            {!mw507px && <td>{currency.initial_investments} &#36;</td>}
-            <td>{currency.current_investments} &#36;</td>
-            {!mw441px && <td>{currency.difference_usd} &#36;</td>}
-            {!mw591px && <td>{currency.difference_percent} %</td>}
-            <td>
+            <td className="portfolio-table__item-name">{currency.name}</td>
+            <td className="portfolio-table__item-sum">{currency.amount}</td>
+            <td className="portfolio-table__item-rate">{currency.priceUsd}</td>
+            <td className="portfolio-table__item-invested">{currency.initial_investments} &#36;</td>
+            <td className="portfolio-table__item-current">{currency.current_investments} &#36;</td>
+            <td className="portfolio-table__item-profit-usd">{currency.difference_usd} &#36;</td>
+            <td className="portfolio-table__item-profit-percents">{currency.difference_percent} %</td>
+            <td className="portfolio-table__item-sell">
                 <button className="button button--toggle" onClick={() => removePortfolioCurrency(currency.id)}>
                     -
                 </button>

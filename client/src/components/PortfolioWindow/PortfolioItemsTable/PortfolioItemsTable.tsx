@@ -1,21 +1,16 @@
 import React from 'react';
+import './PortfolioItemsTable.scss';
 import {useNavigate} from "react-router-dom";
 
 import {usePortfolioFunctions} from 'hooks';
 import {IPortfolioCurrency} from 'contexts';
 import {PortfolioItem} from "./PortfolioItem";
-import {useMediaQuery} from "react-responsive";
 
 
 export const PortfolioItemsTable = () => {
 
     const {portfolio} = usePortfolioFunctions();
     const navigate = useNavigate();
-
-    const mw441 = useMediaQuery({maxWidth: "441px"});
-    const mw507 = useMediaQuery({maxWidth: "507px"});
-    const mw591 = useMediaQuery({maxWidth: "591px"});
-    const mw741 = useMediaQuery({maxWidth: "741px"});
 
     const handleBuyClick = () => {
         (document.querySelector(".modal-close-btn") as HTMLButtonElement).click();
@@ -26,20 +21,20 @@ export const PortfolioItemsTable = () => {
     return (
         <>
             {portfolio.currencies.length ?
-                <table className="table">
+                <table className="portfolio-table table">
                     <thead className="table__header">
-                    <tr>
-                        <th>Name</th>
-                        <th>{mw441 ? "Sum" : "Amount"}</th>
-                        {!mw741 && <th>Rate</th>}
-                        {!mw507 && <th>Invested</th>}
-                        <th>Current</th>
-                        {!mw441 && <th>Profit</th>}
-                        {!mw591 && <th>Profit (%)</th>}
-                        <th>Sell</th>
+                    <tr className="portfolio-table__item">
+                        <th className="portfolio-table__item-name">Name</th>
+                        <th className="portfolio-table__item-sum">Amount</th>
+                        <th className="portfolio-table__item-rate">Rate</th>
+                        <th className="portfolio-table__item-invested">Invested</th>
+                        <th className="portfolio-table__item-current">Current</th>
+                        <th className="portfolio-table__item-profit-usd">Profit</th>
+                        <th className="portfolio-table__item-profit-percents">Profit (%)</th>
+                        <th className="portfolio-table__item-sell">Sell</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="table__body">
                     {portfolio.currencies.map((currency: IPortfolioCurrency) => (
                         <PortfolioItem currency={currency} key={currency.id}/>
                     ))}

@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import './CurrencyCard.scss';
 
-import {useMediaQuery} from "react-responsive";
-
 import {ModalWindow, ChangesSchedule, AddCurrencyWindow} from "components";
 import {ICurrencyInfo} from "hooks";
 
@@ -10,7 +8,6 @@ import {ICurrencyInfo} from "hooks";
 export const CurrencyCard = ({currency}: { currency: ICurrencyInfo }) => {
 
     const [modalOpened, setModalOpened] = useState<boolean>(false);
-    const mw442px = useMediaQuery({maxWidth: "442px"});
 
     const handleBuyClick = () => {
         setModalOpened(state => !state);
@@ -32,12 +29,11 @@ export const CurrencyCard = ({currency}: { currency: ICurrencyInfo }) => {
                         <span>{currency.info.date}</span>
                         <span>{currency.info.time}</span>
                     </p>
-                    {!mw442px &&
-                        <button
-                            className="currency-card__toggle-button button button--toggle"
-                            type="button"
-                            onClick={handleBuyClick}>+</button>
-                    }
+                    <button
+                        className="currency-card__toggle-button button button--toggle"
+                        type="button"
+                        onClick={handleBuyClick}>+
+                    </button>
                 </div>
                 <div className="currency-card__body">
                     <div className="currency-card__body-info weight_semi-bold">

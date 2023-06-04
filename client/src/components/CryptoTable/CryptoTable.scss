@@ -1,0 +1,23 @@
+.crypto-table {
+
+  &__item {
+
+    @media screen and (max-width: 740px) {
+      &-rank, &-symbol, &-vwap {
+        display: none;
+      }
+    }
+
+    @media screen and (max-width: 591px) {
+      &-supply {
+        display: none;
+      }
+    }
+
+    @media screen and (max-width: 441px) {
+      &-volume {
+        display: none;
+      }
+    }
+  }
+}
