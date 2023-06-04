@@ -10,27 +10,14 @@ export class CoincapService {
 
 
     public static async getPageCurrencies(page: string): Promise<IResultType> {
-
-        try {
-            const response = await axios.get(`${this.url}/assets?offset=${(+page - 1) * 15}&limit=15`,
-                {headers: {"Content-Type": "application/json"}});
-            return {
-                type: "success",
-                data: response.data.data.map((currency: any) => {
-                    return UtilitiesService.transformCurrency(currency)
-                })
-            }
-        } catch (err: any) {
-            return {
-                type: "error",
-                data: {
-                    status_code: err.response?.status,
-                    error: err.response?.data.error,
-                    message: err.response?.data.message
-                }
-            }
-        }
+        return CoincapService.makeCurrenciesRequest(15, (+page - 1) * 15);
     }
+
+
+    public static async getHeaderCurrencies(): Promise<IResultType> {
+        return CoincapService.makeCurrenciesRequest(3);
+    }
+
 
     public static async getPortfolioCurrencies(old_currencies: Array<IPortfolioCurrency>): Promise<IResultType> {
 
@@ -54,6 +41,7 @@ export class CoincapService {
             }
         }
     }
+
 
     public static async getCurrencyInfo(id: string): Promise<IResultType> {
 
@@ -82,4 +70,27 @@ export class CoincapService {
         }
     }
 
+
+    private static async makeCurrenciesRequest(limit: number, offset: number = 0): Promise<IResultType> {
+
+        try {
+            const response = await axios.get(`${this.url}/assets?limit=${limit}&offset=${offset}`,
+                {headers: {"Content-Type": "application/json"}});
+            return {
+                type: "success",
+                data: response.data.data.map((currency: any) => {
+                    return UtilitiesService.transformCurrency(currency)
+                })
+            }
+        } catch (err: any) {
+            return {
+                type: "error",
+                data: {
+                    status_code: err.response?.status,
+                    error: err.response?.data.error,
+                    message: err.response?.data.message
+                }
+            }
+        }
+    }
 }

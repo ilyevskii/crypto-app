@@ -5,7 +5,7 @@ import {useNavigate} from "react-router-dom";
 import {HeaderCurrencies} from "./HeaderCurrencies/HeaderCurrencies";
 import {ModalWindow} from "../ModalWindow/ModalWindow";
 import {PortfolioWindow} from "../PortfolioWindow/PortfolioWindow";
-import {usePageCurrencies, usePortfolioCurrencies, usePortfolioFunctions} from "hooks";
+import {usePortfolioCurrencies, usePortfolioFunctions} from "hooks";
 
 
 export const Header = () => {
@@ -18,6 +18,10 @@ export const Header = () => {
     const handlePortfolioClick = () => {
         setPortfolioOpened(state => !state);
     }
+
+    useEffect(() => {
+        if (portfolio_currencies) updatePortfolioCurrencies(portfolio_currencies);
+    }, [portfolio_currencies])
 
 
     return (
