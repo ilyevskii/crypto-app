@@ -19,9 +19,6 @@ export const useCurrencyInfo = (id: string) => {
             } else {
                 throw new Error(JSON.stringify(result.data));
             }
-        },
-        {
-            refetchInterval: 15000
         });
 
 
