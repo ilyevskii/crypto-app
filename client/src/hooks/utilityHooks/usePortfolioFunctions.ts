@@ -64,7 +64,7 @@ export const usePortfolioFunctions = () => {
         setPortfolio(portfolio);
     }
 
-    const updatePortfolioCurrencies = (currencies: any[]): void => {
+    const updatePortfolioCurrencies = (currencies: Array<any>): void => {
 
         portfolio.currencies = portfolio.currencies.map((saved_currency: IPortfolioCurrency) => {
 

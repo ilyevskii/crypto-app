@@ -5,7 +5,7 @@ export interface IPortfolio {
     is_profit: boolean;
     difference_usd: string;
     difference_percent: string;
-    currencies: IPortfolioCurrency[];
+    currencies: Array<IPortfolioCurrency>;
 }
 
 export interface IPortfolioCurrency {

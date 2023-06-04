@@ -5,7 +5,7 @@ import {CoincapService, ICurrency, IResultType} from "services";
 export const useAllCurrencies = () => {
 
 
-    const {data, isLoading, isError, error, refetch} = useQuery<ICurrency[] | undefined, Error>(["all_currencies"],
+    const {data, isLoading, isError, error, refetch} = useQuery<Array<ICurrency> | undefined, Error>(["all_currencies"],
 
         async () => {
             const result: IResultType = await CoincapService.getAllCurrencies();

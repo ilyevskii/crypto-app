@@ -8,7 +8,7 @@ import {useMediaQuery} from "react-responsive";
 
 export const HeaderCurrencies = () => {
 
-    const [header_currencies, setHeaderCurrencies] = useState<ICurrency[]>([]);
+    const [header_currencies, setHeaderCurrencies] = useState<Array<ICurrency>>([]);
     const {crypto_currencies, is_crypto_currencies_loading} = useAllCurrencies();
     const isSmallScreen = useMediaQuery({maxWidth: "591px"});
 

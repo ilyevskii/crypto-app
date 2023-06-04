@@ -4,10 +4,10 @@ import './CurrencyCard.scss';
 import {useMediaQuery} from "react-responsive";
 
 import {ModalWindow, ChangesSchedule, AddCurrencyWindow} from "components";
-import {CurrencyInfoType} from "hooks";
+import {ICurrencyInfo} from "hooks";
 
 
-export const CurrencyCard = ({currency}: { currency: CurrencyInfoType }) => {
+export const CurrencyCard = ({currency}: { currency: ICurrencyInfo }) => {
 
     const [modalOpened, setModalOpened] = useState<boolean>(false);
     const mw442px = useMediaQuery({maxWidth: "442px"});

@@ -11,7 +11,7 @@ export const MainPage = () => {
 
     const {page, setPageSearchParam} = useSearchParams();
     const {crypto_currencies, is_crypto_currencies_loading, is_crypto_currencies_error} = useAllCurrencies();
-    const [page_currencies, setPageCurrencies] = useState<ICurrency[]>([]);
+    const [page_currencies, setPageCurrencies] = useState<Array<ICurrency>>([]);
 
     useEffect(() => {
         if (crypto_currencies) {

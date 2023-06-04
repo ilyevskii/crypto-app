@@ -33,10 +33,10 @@ export class UtilitiesService {
         return transformed;
     }
 
-    public static transformHistory(history: IHistoryItem[]): any {
+    public static transformHistory(history: Array<IHistoryItem>): any {
 
-        const prices: number[] = [];
-        const hours: string[] = [];
+        const prices: Array<number> = [];
+        const hours: Array<string> = [];
 
         let min = 1 / 0;
         let max = 0;

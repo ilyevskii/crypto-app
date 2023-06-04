@@ -11,7 +11,7 @@ const INITIAL_STATE: IPortfolioContext = {
             is_profit: true,
             difference_percent: "0",
             difference_usd: "0",
-            currencies: [] as IPortfolioCurrency[]
+            currencies: [] as Array<IPortfolioCurrency>
         } as IPortfolio,
     setPortfolio: () => {
     },

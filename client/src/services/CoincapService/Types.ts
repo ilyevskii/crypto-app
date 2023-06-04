@@ -27,6 +27,6 @@ export interface IHistoryItem {
 export interface IModifiedHistory {
     min: number;
     max: number;
-    hours: string[];
-    prices: number[][];
+    hours: Array<string>;
+    prices: Array<Array<number>>;
 }
