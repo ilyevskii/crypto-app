@@ -13,7 +13,6 @@ export const PortfolioItemsTable = () => {
     const navigate = useNavigate();
 
     const handleBuyClick = () => {
-        (document.querySelector(".modal-close-btn") as HTMLButtonElement).click();
         navigate("/?page=1");
     }
 

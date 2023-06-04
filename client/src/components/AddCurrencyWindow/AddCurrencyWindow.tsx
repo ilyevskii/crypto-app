@@ -3,6 +3,7 @@ import './AddCurrencyWindow.scss';
 
 import {usePortfolioFunctions} from 'hooks';
 import {ICurrency} from 'services';
+import {useNavigate} from "react-router-dom";
 
 interface ICurrencyWindowProps {
     currency: ICurrency;
@@ -14,11 +15,12 @@ export const AddCurrencyWindow = (props: ICurrencyWindowProps) => {
     const {currency} = props;
     const {addPortfolioCurrency} = usePortfolioFunctions();
     const [value, setValue] = useState<string>("");
+    const navigate = useNavigate();
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
         addPortfolioCurrency(currency, Number(value));
-        (document.querySelector(".modal-close-btn") as HTMLButtonElement).click();
+        navigate("/?page=1");
     }
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
