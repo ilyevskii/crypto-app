@@ -1,7 +1,6 @@
 import React from 'react';
 import './ChangesSchedule.scss';
-import {HistoryItem} from "services";
-import {ModifiedHistory} from "../../../services/CoincapService/Types";
+import {IModifiedHistory} from "../../../services/CoincapService/Types";
 
 
 import {Line} from 'react-chartjs-2';
@@ -29,18 +28,18 @@ Chart.register(
     Legend
 );
 
-interface Props {
-    changes: ModifiedHistory;
+interface IChangesScheduleProps {
+    changes: IModifiedHistory;
     profit: boolean;
 }
 
 
-export function ChangesSchedule(props: Props) {
+export const ChangesSchedule = (props: IChangesScheduleProps) => {
 
 
     const {hours, prices, min, max} = props.changes;
 
-    const options={
+    const options = {
         responsive: true,
         scales: {
             y: {

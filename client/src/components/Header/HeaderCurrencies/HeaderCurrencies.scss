@@ -1,6 +1,6 @@
 @import "../Header";
 
-.header-currencies {
+.header__currencies {
   @include flex-row(3.75em);
 
   @media screen and (max-width: 1023px) {
@@ -11,22 +11,22 @@
     flex-direction: column;
     gap: 0.5em;
   }
-}
 
-.header-currencies-item {
-  color: $black;
-  list-style-type: none;
-  text-align: center;
+  &-item {
+    color: $black;
+    list-style-type: none;
+    text-align: center;
 
-  @media screen and (max-width: 742px) {
-    @include flex-row();
-    gap: 0.5em;
-    justify-content: space-between;
-  }
+    @media screen and (max-width: 742px) {
+      @include flex-row();
+      gap: 0.5em;
+      justify-content: space-between;
+    }
 
-  @media screen and (max-width: 591px) {
-    @include flex-row();
-    gap: 0.5em;
-    justify-content: center;
+    @media screen and (max-width: 591px) {
+      @include flex-row();
+      gap: 0.5em;
+      justify-content: center;
+    }
   }
 }

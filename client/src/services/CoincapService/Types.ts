@@ -1,9 +1,9 @@
-export interface ResultType {
+export interface IResultType {
     type: string;
     data: any;
 }
 
-export interface Currency {
+export interface ICurrency {
     id: string;
     rank: string;
     symbol: string;
@@ -19,14 +19,14 @@ export interface Currency {
     marketCapUsd?: string;
 }
 
-export interface HistoryItem {
+export interface IHistoryItem {
     priceUsd: string;
     time: string;
 }
 
-export interface ModifiedHistory {
+export interface IModifiedHistory {
     min: number;
     max: number;
-    hours: string[];
-    prices: number[][];
+    hours: Array<string>;
+    prices: Array<Array<number>>;
 }

@@ -1,6 +1,6 @@
 @import "../../styles/utilities";
 
-.site-header {
+.header {
   @include flex-row();
   align-items: center;
   background-color: $white;
@@ -8,7 +8,7 @@
   padding: 0.625em 11.25%;
   width: 100%;
 
-  .logo {
+  &__logo {
     @include flex-column();
     color: $black;
     justify-content: flex-start;
@@ -34,7 +34,7 @@
     }
   }
 
-  .portfolio-info-btn {
+  &__portfolio-button {
     border-radius: 1.5em;
     padding: 0.4em 0.75em;
     transition: 0.25s ease;

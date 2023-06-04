@@ -1,14 +1,14 @@
 import {Dispatch, ReactNode} from "react";
 
-export interface Portfolio {
+export interface IPortfolio {
     balance: string;
     is_profit: boolean;
     difference_usd: string;
     difference_percent: string;
-    currencies: PortfolioCurrency[];
+    currencies: Array<IPortfolioCurrency>;
 }
 
-export interface PortfolioCurrency {
+export interface IPortfolioCurrency {
     id: string;
     rank: string;
     amount: number;
@@ -21,21 +21,21 @@ export interface PortfolioCurrency {
     difference_usd: string;
 }
 
-export interface PortfolioContextProviderProps {
+export interface IPortfolioContextProviderProps {
     children: ReactNode;
 }
 
-export interface PortfolioContextInterface {
-    portfolio: Portfolio;
-    setPortfolio: (payload: Portfolio) => void;
-    dispatch: Dispatch<Action>;
+export interface IPortfolioContext {
+    portfolio: IPortfolio;
+    setPortfolio: (payload: IPortfolio) => void;
+    dispatch: Dispatch<IPortfolioAction>;
 }
 
-export interface PortfolioState{
-    portfolio: Portfolio;
+export interface IPortfolioState {
+    portfolio: IPortfolio;
 }
 
-export interface Action {
+export interface IPortfolioAction {
     type: string;
-    portfolio_payload: Portfolio;
+    portfolio_payload: IPortfolio;
 }

@@ -1,16 +1,13 @@
 import React, {useState} from 'react';
 import './CurrencyCard.scss';
 
-import {useMediaQuery} from "react-responsive";
-
 import {ModalWindow, ChangesSchedule, AddCurrencyWindow} from "components";
-import {CurrencyInfoType} from "hooks";
+import {ICurrencyInfo} from "hooks";
 
 
-export function CurrencyCard({currency}: {currency: CurrencyInfoType}) {
+export const CurrencyCard = ({currency}: { currency: ICurrencyInfo }) => {
 
     const [modalOpened, setModalOpened] = useState<boolean>(false);
-    const mw442px = useMediaQuery({maxWidth: "442px"});
 
     const handleBuyClick = () => {
         setModalOpened(state => !state);
@@ -19,27 +16,27 @@ export function CurrencyCard({currency}: {currency: CurrencyInfoType}) {
 
     return (
         <>
-            {modalOpened && <ModalWindow child={<AddCurrencyWindow currency={currency.info}/>} onClose={handleBuyClick}/>}
+            {modalOpened &&
+                <ModalWindow child={<AddCurrencyWindow currency={currency.info}/>} onClose={handleBuyClick}/>}
 
             <div className="currency-card">
-                <div className="currency-card-header">
-                    <div className="currency-card-header-logo">
+                <div className="currency-card__header">
+                    <div className="currency-card__header-logo">
                         <h2>{currency.info.name}</h2>
                         <p>{currency.info.symbol}</p>
                     </div>
-                    <p className="currency-card-header-date">
+                    <p className="currency-card__header-date">
                         <span>{currency.info.date}</span>
                         <span>{currency.info.time}</span>
                     </p>
-                    {!mw442px &&
                     <button
-                        className="toggle-currency-control-btn"
+                        className="currency-card__toggle-button button button--toggle"
                         type="button"
-                        onClick={handleBuyClick}>+</button>
-                    }
+                        onClick={handleBuyClick}>+
+                    </button>
                 </div>
-                <div className="currency-card-body">
-                    <div className="currency-card-body-info semi-bold">
+                <div className="currency-card__body">
+                    <div className="currency-card__body-info weight_semi-bold">
                         <p><span className="color-grey">NOW</span><span>&#36;{currency.info.priceUsd}</span></p>
                         <p><span className="color-grey">CHANGE</span>
                             <span className={`color-${currency.info.profit ? 'success' : 'failure'}`}>
@@ -49,14 +46,16 @@ export function CurrencyCard({currency}: {currency: CurrencyInfoType}) {
                         <p><span className="color-grey">SUPPLY</span><span>&#36;{currency.info.supply}</span></p>
                         <p><span className="color-grey">HIGH 24H</span><span>&#36;{currency.info.vwap24Hr}</span></p>
                         <p><span className="color-grey">VOLUME</span><span>&#36;{currency.info.volumeUsd24Hr}</span></p>
-                        <p><span className="color-grey">MARKET CAP</span><span>&#36;{currency.info.marketCapUsd}</span></p>
+                        <p><span className="color-grey">MARKET CAP</span><span>&#36;{currency.info.marketCapUsd}</span>
+                        </p>
                     </div>
                     <ChangesSchedule changes={currency.changes} profit={currency.info.profit}/>
                 </div>
                 <button
-                    className="styled-btn"
+                    className="button button--styled"
                     type="button"
-                    onClick={handleBuyClick}>Buy Currency</button>
+                    onClick={handleBuyClick}>Buy Currency
+                </button>
             </div>
         </>
     );

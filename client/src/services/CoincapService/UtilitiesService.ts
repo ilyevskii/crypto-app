@@ -1,12 +1,11 @@
-import {Currency, HistoryItem} from "./Types";
-
+import {ICurrency, IHistoryItem} from "./Types";
 
 
 export class UtilitiesService {
 
-    public static transformCurrency(currency: any, is_single: boolean = false, timestamp?: number): Currency {
+    public static transformCurrency(currency: any, is_single: boolean = false, timestamp?: number): ICurrency {
 
-        const transformed: Currency = {
+        const transformed: ICurrency = {
             id: currency.id,
             rank: currency.rank,
             symbol: currency.symbol,
@@ -22,17 +21,22 @@ export class UtilitiesService {
         if (is_single) {
             const date = new Date(timestamp!);
             transformed.date = date.toLocaleDateString("en-GB", {day: "numeric", month: "long", year: "numeric"});
-            transformed.time = date.toLocaleTimeString("en-US", {hour12: false, hourCycle: "h23", hour: "2-digit", minute: "2-digit"});
+            transformed.time = date.toLocaleTimeString("en-US", {
+                hour12: false,
+                hourCycle: "h23",
+                hour: "2-digit",
+                minute: "2-digit"
+            });
             transformed.marketCapUsd = UtilitiesService.sliceNum(currency.marketCapUsd);
         }
 
         return transformed;
     }
 
-    public static transformHistory(history: HistoryItem[]): any {
+    public static transformHistory(history: Array<IHistoryItem>): any {
 
-        const prices: number[] = [];
-        const hours: string[] = [];
+        const prices: Array<number> = [];
+        const hours: Array<string> = [];
 
         let min = 1 / 0;
         let max = 0;

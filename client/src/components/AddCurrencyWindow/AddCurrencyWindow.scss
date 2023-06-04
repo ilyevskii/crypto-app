@@ -4,11 +4,11 @@
   @include flex-column(1em);
   font-family: Inter, sans-serif;
 
-  &-header {
+  &__header {
     font-size: 1.15em;
   }
 
-  &-form {
+  &__form {
     @include flex-column(1em);
   }
 }

@@ -8,7 +8,7 @@ import {PortfolioContextProvider} from "contexts";
 
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+    document.getElementById('root') as HTMLElement
 );
 
 const client = new QueryClient();
@@ -17,7 +17,7 @@ const client = new QueryClient();
 root.render(
     <QueryClientProvider client={client}>
         <PortfolioContextProvider>
-            <App />
+            <App/>
         </PortfolioContextProvider>
     </QueryClientProvider>
 );

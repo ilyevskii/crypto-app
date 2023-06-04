@@ -1,24 +1,21 @@
 import {useQuery} from "react-query";
-import {CoincapService, Currency, ResultType} from "services";
+import {CoincapService, ICurrency, IResultType} from "services";
+import {useSearchParams} from "hooks";
 
 
-export const useAllCurrencies = () => {
+export const usePageCurrencies = () => {
 
-
-    const {data, isLoading, isError, error, refetch} = useQuery<Currency[] | undefined, Error>(["all_currencies"],
+    const {page} = useSearchParams();
+    const {data, isLoading, isError, error, refetch} = useQuery<Array<ICurrency> | undefined, Error>(["page_currencies", page],
 
         async () => {
-            const result: ResultType = await CoincapService.getAllCurrencies();
+            const result: IResultType = await CoincapService.getPageCurrencies(page!);
 
             if (result.type === "success") {
                 return result.data;
-            }
-            else {
+            } else {
                 throw new Error(JSON.stringify(result.data));
             }
-        },
-        {
-            refetchInterval: 15000
         });
 
 

@@ -1,28 +1,24 @@
 import {useQuery} from "react-query";
-import {CoincapService, Currency, ResultType, HistoryItem} from "services";
-import {ModifiedHistory} from "../../services/CoincapService/Types";
+import {CoincapService, ICurrency, IResultType} from "services";
+import {IModifiedHistory} from "../../services/CoincapService/Types";
 
-export interface CurrencyInfoType {
-    info: Currency,
-    changes: ModifiedHistory
+export interface ICurrencyInfo {
+    info: ICurrency,
+    changes: IModifiedHistory
 }
 
 export const useCurrencyInfo = (id: string) => {
 
-    const {data, isLoading, isError, error, refetch} = useQuery<CurrencyInfoType | undefined, Error>(["currency", id],
+    const {data, isLoading, isError, error, refetch} = useQuery<ICurrencyInfo | undefined, Error>(["currency", id],
 
         async () => {
-            const result: ResultType = await CoincapService.getCurrencyInfo(id);
+            const result: IResultType = await CoincapService.getCurrencyInfo(id);
 
             if (result.type === "success") {
                 return result.data;
-            }
-            else {
+            } else {
                 throw new Error(JSON.stringify(result.data));
             }
-        },
-        {
-            refetchInterval: 15000
         });
 
 
